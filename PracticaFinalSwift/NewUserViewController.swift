@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NewUserViewController.swift
 //  PracticaFinalSwift
 //
 //  Created by Daniel Queraltó Parra on 01/02/2019.
@@ -8,32 +8,53 @@
 
 import UIKit
 import SQLite3
-class ViewController: UIViewController {
+
+class NewUserViewController: UIViewController {
     var db: OpaquePointer?
     var usuarios = [Usu]()
     
+    @IBOutlet weak var usuario: UITextField!
+    @IBOutlet weak var contrasenia: UITextField!
+    @IBOutlet weak var confirmarContrasenia: UITextField!
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        crearBD()
+
+        conectarDB()
+        
     }
-    //MODIFICAMOS EL NOMBRE DEL BOTON DE RETROCESO
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let backItem = UIBarButtonItem()
-        backItem.title = "Atras"
-        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
-    }
-    //BASE DE DATOS
-    //---------------------------------------------------------------------------------------------------------
-    func crearBD()
+    
+    @IBAction func nuevo(_ sender: Any)
     {
-        //INDICAMOS DONDE SE GUARDARA LA BASE DE DATOS Y EL NOMBRE DE ESTAS
+        for usu in usuarios.reversed()
+        {
+            if usu.usuario == usuario.text!
+            {
+                print("Usuario Existente")
+            }else if contrasenia.text! == confirmarContrasenia.text!
+            {
+                insertar()
+            }
+                    
+        }
+    }
+    
+    
+    //---------------------------------------------------------------------------------------------------------
+    func conectarDB()
+    {
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("Usuarios.sqlite")
-        //INDICAMOS SI DIERA ALGUN FALLO AL CONECTARSE
+        
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
-            print("error al abrir la base de datos")
+            print("error opening database")
         }
-        else {//SI PODEMOS CONECTARNOS A LA BASE DE DATOS CREAREMOS LA ESTRUCTURA DE ESTA, SI NO EXISTIERA NO SE HARIA NADA
+        else {
             print("base abierta")
             if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Usuarios (usuario TEXT PRIMARY KEY AUTOINCREMENT, contrasenia TEXT)", nil, nil, nil) != SQLITE_OK {
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
@@ -41,16 +62,14 @@ class ViewController: UIViewController {
             }
         }
         leerValores()
-        
-        
     }
-    /*
+    
     func insertar()  {
         //CREAMOS EL PUNTERO DE INSTRUCCIÓN
         var stmt: OpaquePointer?
         
         //CREAMOS NUESTRA SENTENCIA
-        let queryString = "INSERT INTO Historial (url) VALUES ("+"'"+String(barraDeBusqueda.text!)+"')"
+        let queryString = "INSERT INTO Usuarios (usuario,contrasenia) VALUES ("+"'"+String(usuario.text!)+"','"+String(contrasenia.text!)+" ')"
         //PREPARAMOS LA SENTENCIA
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
@@ -73,9 +92,10 @@ class ViewController: UIViewController {
         print("Histo saved successfully")
         
     }
- */
+    
     func leerValores(){
         
+
         
         //GUARDAMOS NUESTRA CONSULTA
         let queryString = "SELECT * FROM Usuarios"
@@ -99,20 +119,10 @@ class ViewController: UIViewController {
             //AÑADIMOS LOS VALORES A LA LISTA
             usuarios.append(Usu(usuario: String(describing: usuario), contrasenia: String(describing: contrasenia)))
         }
+        
     }
     //---------------------------------------------------------------------------------------------------------
 
 }
 
-class Usu{
-    
-    var usuario: String
-    var contrasenia: String
-    
-    init (usuario: String, contrasenia: String)
-    {
-        self.usuario = usuario
-        self.contrasenia = contrasenia
-    }
-    
-}
+

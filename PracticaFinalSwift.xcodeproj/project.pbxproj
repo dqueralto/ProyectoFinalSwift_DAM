@@ -14,6 +14,8 @@
 		7FA2E79A2204C1FD0056CF60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FA2E7982204C1FD0056CF60 /* LaunchScreen.storyboard */; };
 		7FA2E7A52204C1FD0056CF60 /* PracticaFinalSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA2E7A42204C1FD0056CF60 /* PracticaFinalSwiftTests.swift */; };
 		7FA2E7B02204C1FD0056CF60 /* PracticaFinalSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA2E7AF2204C1FD0056CF60 /* PracticaFinalSwiftUITests.swift */; };
+		7FA2E7C22204CF610056CF60 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA2E7C12204CF610056CF60 /* LoginViewController.swift */; };
+		7FA2E7C42204D09B0056CF60 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA2E7C32204D09B0056CF60 /* NewUserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		7FA2E7AB2204C1FD0056CF60 /* PracticaFinalSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaFinalSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA2E7AF2204C1FD0056CF60 /* PracticaFinalSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticaFinalSwiftUITests.swift; sourceTree = "<group>"; };
 		7FA2E7B12204C1FD0056CF60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FA2E7C12204CF610056CF60 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7FA2E7C32204D09B0056CF60 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 			children = (
 				7FA2E78F2204C1F90056CF60 /* AppDelegate.swift */,
 				7FA2E7912204C1F90056CF60 /* ViewController.swift */,
+				7FA2E7C12204CF610056CF60 /* LoginViewController.swift */,
+				7FA2E7C32204D09B0056CF60 /* NewUserViewController.swift */,
 				7FA2E7932204C1F90056CF60 /* Main.storyboard */,
 				7FA2E7962204C1FD0056CF60 /* Assets.xcassets */,
 				7FA2E7982204C1FD0056CF60 /* LaunchScreen.storyboard */,
@@ -256,7 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FA2E7C22204CF610056CF60 /* LoginViewController.swift in Sources */,
 				7FA2E7922204C1F90056CF60 /* ViewController.swift in Sources */,
+				7FA2E7C42204D09B0056CF60 /* NewUserViewController.swift in Sources */,
 				7FA2E7902204C1F90056CF60 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
