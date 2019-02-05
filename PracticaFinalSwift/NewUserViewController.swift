@@ -13,10 +13,10 @@ class NewUserViewController: UIViewController {
     var db: OpaquePointer?
     var usuarios = [Usu]()
     
+
     @IBOutlet weak var usuario: UITextField!
-    @IBOutlet weak var contrasenia: UITextField!
     @IBOutlet weak var confirmarContrasenia: UITextField!
-    
+    @IBOutlet weak var contrasenia: UITextField!
     
     
     
@@ -25,26 +25,33 @@ class NewUserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        conectarDBUsu()
+        //conectarDBUsu()
+        
+        
         
     }
     
     @IBAction func nuevo(_ sender: Any)
     {
-        for usu in usuarios.reversed()
+        /*for usu in usuarios.reversed()
         {
             if usu.usuario == usuario.text!
             {
                 print("Usuario Existente")
-            }else if contrasenia.text! == confirmarContrasenia.text!
+            }else*/ if contrasenia.text!.contains(confirmarContrasenia.text!)
             {
-                insertar()
+                print(usuario.text!)
+                print(contrasenia.text!)
+                print(confirmarContrasenia.text!)
+                
+                //insertar()
             }
                     
-        }
+        //}
     }
     
     
+    /*
     //---------------------------------------------------------------------------------------------------------
     func conectarDBUsu()
     {
@@ -88,6 +95,7 @@ class NewUserViewController: UIViewController {
         
         //FINALIZAMOS LA SENTENCIA
         sqlite3_finalize(stmt)
+        print("Insertado")
         //displaying a success message
         print("Histo saved successfully")
         
@@ -122,7 +130,7 @@ class NewUserViewController: UIViewController {
         
     }
     //---------------------------------------------------------------------------------------------------------
-
+*/
 }
 
 

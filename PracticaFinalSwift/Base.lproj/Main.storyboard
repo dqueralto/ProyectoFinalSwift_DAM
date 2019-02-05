@@ -53,7 +53,7 @@
                                 <rect key="frame" x="50" y="359" width="314" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -202,79 +202,70 @@
                                     <action selector="nuevo:" destination="qwG-uA-jmn" eventType="touchUpInside" id="hBL-Do-3Mc"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vfb-kk-Cpq">
-                                <rect key="frame" x="50" y="232" width="314" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="username"/>
-                                <connections>
-                                    <outlet property="delegate" destination="qwG-uA-jmn" id="JZl-08-xvd"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iL3-7t-Alc">
-                                <rect key="frame" x="50" y="299" width="314" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="qwG-uA-jmn" id="icK-nO-EPh"/>
-                                </connections>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repetir Contraseña:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJt-55-DwN">
                                 <rect key="frame" x="50" y="337" width="314" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RV8-dU-kKQ">
-                                <rect key="frame" x="50" y="366" width="314" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jWi-P9-SNH">
+                                <rect key="frame" x="20" y="232" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="qwG-uA-jmn" id="FpV-6t-ZeT"/>
-                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QTe-o2-rC9">
+                                <rect key="frame" x="20" y="299" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qck-bw-YFP">
+                                <rect key="frame" x="20" y="366" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="SuD-U7-oNz" secondAttribute="trailing" constant="50" id="0Vs-Pm-tA0"/>
-                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="iL3-7t-Alc" secondAttribute="trailing" constant="50" id="1RU-OM-eoH"/>
-                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="ZC8-Lm-lDq" secondAttribute="trailing" constant="64" id="27i-Ki-OwM"/>
-                            <constraint firstItem="9eJ-ig-hlY" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="168" id="4vA-wI-x4f"/>
-                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="bottom" secondItem="9eJ-ig-hlY" secondAttribute="bottom" constant="399" id="6iw-WP-MkT"/>
-                            <constraint firstItem="SuD-U7-oNz" firstAttribute="top" secondItem="vfb-kk-Cpq" secondAttribute="bottom" constant="8" id="7bV-jR-pzl"/>
-                            <constraint firstItem="vfb-kk-Cpq" firstAttribute="top" secondItem="paz-2P-x5W" secondAttribute="bottom" constant="8" id="89d-z1-bwG"/>
-                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="rJt-55-DwN" secondAttribute="trailing" constant="50" id="AW5-k6-msl"/>
-                            <constraint firstItem="rJt-55-DwN" firstAttribute="top" secondItem="iL3-7t-Alc" secondAttribute="bottom" constant="8" id="Gkr-Oa-K29"/>
-                            <constraint firstItem="iL3-7t-Alc" firstAttribute="top" secondItem="SuD-U7-oNz" secondAttribute="bottom" constant="8" id="L20-JC-cdW"/>
-                            <constraint firstItem="RV8-dU-kKQ" firstAttribute="top" secondItem="rJt-55-DwN" secondAttribute="bottom" constant="8" id="OR3-JW-eNJ"/>
-                            <constraint firstItem="ZC8-Lm-lDq" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="64" id="OmB-Tg-ldN"/>
-                            <constraint firstItem="paz-2P-x5W" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="50" id="RiS-Wa-Q2x"/>
-                            <constraint firstItem="paz-2P-x5W" firstAttribute="top" secondItem="ZC8-Lm-lDq" secondAttribute="bottom" constant="43" id="Tkx-WF-04Z"/>
-                            <constraint firstItem="rJt-55-DwN" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="50" id="Ulq-Yd-IUA"/>
-                            <constraint firstItem="9eJ-ig-hlY" firstAttribute="top" secondItem="RV8-dU-kKQ" secondAttribute="bottom" constant="37" id="ajb-zo-BNy"/>
-                            <constraint firstItem="vfb-kk-Cpq" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="50" id="bop-Ct-nss"/>
-                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="vfb-kk-Cpq" secondAttribute="trailing" constant="50" id="fkY-uz-GCl"/>
-                            <constraint firstItem="RV8-dU-kKQ" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="50" id="onc-ZG-2aL"/>
-                            <constraint firstItem="ZC8-Lm-lDq" firstAttribute="top" secondItem="Kfz-Z7-GwG" secondAttribute="top" id="u2q-mN-8hx"/>
-                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="RV8-dU-kKQ" secondAttribute="trailing" constant="50" id="uib-tb-Jlb"/>
-                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="paz-2P-x5W" secondAttribute="trailing" constant="50" id="vNY-bM-ayi"/>
-                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="9eJ-ig-hlY" secondAttribute="trailing" constant="168" id="xoU-O1-gfq"/>
-                            <constraint firstItem="SuD-U7-oNz" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="50" id="y1l-w1-hrD"/>
-                            <constraint firstItem="iL3-7t-Alc" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="50" id="yVG-zj-Nv5"/>
+                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="rJt-55-DwN" secondAttribute="trailing" constant="50" id="1rV-4W-SX9"/>
+                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="jWi-P9-SNH" secondAttribute="trailing" constant="20" id="5ea-7D-5mZ"/>
+                            <constraint firstItem="QTe-o2-rC9" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="20" id="9sK-l0-OVD"/>
+                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="qck-bw-YFP" secondAttribute="trailing" constant="20" id="AZF-0S-0tN"/>
+                            <constraint firstItem="ZC8-Lm-lDq" firstAttribute="top" secondItem="Kfz-Z7-GwG" secondAttribute="top" id="BEF-pV-Xhy"/>
+                            <constraint firstItem="QTe-o2-rC9" firstAttribute="top" secondItem="SuD-U7-oNz" secondAttribute="bottom" constant="8" id="DPv-F4-3p5"/>
+                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="SuD-U7-oNz" secondAttribute="trailing" constant="50" id="Eub-4p-fQZ"/>
+                            <constraint firstItem="jWi-P9-SNH" firstAttribute="top" secondItem="paz-2P-x5W" secondAttribute="bottom" constant="8" id="FWu-PP-HRs"/>
+                            <constraint firstItem="paz-2P-x5W" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="50" id="G47-61-yfb"/>
+                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="paz-2P-x5W" secondAttribute="trailing" constant="50" id="Jel-vS-h0v"/>
+                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="9eJ-ig-hlY" secondAttribute="trailing" constant="168" id="NUj-Dl-H1z"/>
+                            <constraint firstItem="SuD-U7-oNz" firstAttribute="top" secondItem="jWi-P9-SNH" secondAttribute="bottom" constant="8" id="P9q-le-5Qj"/>
+                            <constraint firstItem="qck-bw-YFP" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="20" id="Pt1-E9-18O"/>
+                            <constraint firstItem="qck-bw-YFP" firstAttribute="top" secondItem="rJt-55-DwN" secondAttribute="bottom" constant="8" id="RCz-MY-nmg"/>
+                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="QTe-o2-rC9" secondAttribute="trailing" constant="20" id="SFb-xD-ip2"/>
+                            <constraint firstItem="rJt-55-DwN" firstAttribute="top" secondItem="QTe-o2-rC9" secondAttribute="bottom" constant="8" id="ThT-QI-gVa"/>
+                            <constraint firstItem="ZC8-Lm-lDq" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="64" id="Vmp-HY-9dm"/>
+                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="bottom" secondItem="9eJ-ig-hlY" secondAttribute="bottom" constant="399" id="bPS-xw-FQA"/>
+                            <constraint firstItem="9eJ-ig-hlY" firstAttribute="top" secondItem="qck-bw-YFP" secondAttribute="bottom" constant="37" id="dRW-5h-Ugv"/>
+                            <constraint firstItem="rJt-55-DwN" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="50" id="g3Q-ch-o4b"/>
+                            <constraint firstItem="paz-2P-x5W" firstAttribute="top" secondItem="ZC8-Lm-lDq" secondAttribute="bottom" constant="43" id="nlM-aa-9rg"/>
+                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="ZC8-Lm-lDq" secondAttribute="trailing" constant="64" id="nya-ma-eTa"/>
+                            <constraint firstItem="9eJ-ig-hlY" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="168" id="oXc-lQ-unM"/>
+                            <constraint firstItem="SuD-U7-oNz" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="50" id="y8S-xY-RaM"/>
+                            <constraint firstItem="jWi-P9-SNH" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="20" id="zOb-Uj-ERj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Kfz-Z7-GwG"/>
                     </view>
                     <connections>
-                        <outlet property="confirmarContrasenia" destination="RV8-dU-kKQ" id="Etz-8Z-OtL"/>
-                        <outlet property="contrasenia" destination="iL3-7t-Alc" id="mxN-pU-0Aj"/>
-                        <outlet property="usuario" destination="vfb-kk-Cpq" id="zq8-Od-Iqp"/>
+                        <outlet property="confirmarContrasenia" destination="qck-bw-YFP" id="FVU-aS-iVh"/>
+                        <outlet property="contrasenia" destination="QTe-o2-rC9" id="GAp-R1-RT2"/>
+                        <outlet property="usuario" destination="jWi-P9-SNH" id="Mmw-mX-DcH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jox-gv-qlo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="743" y="244"/>
+            <point key="canvasLocation" x="742.02898550724649" y="243.75"/>
         </scene>
         <!--Contenido View Controller-->
         <scene sceneID="mQk-aS-gqo">

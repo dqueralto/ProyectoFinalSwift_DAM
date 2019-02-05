@@ -53,6 +53,7 @@
 		7FA2E7C12204CF610056CF60 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7FA2E7C32204D09B0056CF60 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		7FA2E7C52208CA280056CF60 /* ContenidoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContenidoViewController.swift; sourceTree = "<group>"; };
+		7FA2E7C72209F9270056CF60 /* PracticaFinalSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PracticaFinalSwift.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +90,7 @@
 				7FA2E78D2204C1F90056CF60 /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		7FA2E78D2204C1F90056CF60 /* Products */ = {
 			isa = PBXGroup;
@@ -103,6 +105,7 @@
 		7FA2E78E2204C1F90056CF60 /* PracticaFinalSwift */ = {
 			isa = PBXGroup;
 			children = (
+				7FA2E7C72209F9270056CF60 /* PracticaFinalSwift.entitlements */,
 				7FA2E78F2204C1F90056CF60 /* AppDelegate.swift */,
 				7FA2E7912204C1F90056CF60 /* ViewController.swift */,
 				7FA2E7C12204CF610056CF60 /* LoginViewController.swift */,
@@ -202,6 +205,17 @@
 				TargetAttributes = {
 					7FA2E78B2204C1F90056CF60 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 					7FA2E79F2204C1FD0056CF60 = {
 						CreatedOnToolsVersion = 10.1;
