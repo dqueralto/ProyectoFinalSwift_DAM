@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        crearBD()
+        crearBDUsu()
     }
     //MODIFICAMOS EL NOMBRE DEL BOTON DE RETROCESO
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     }
     //BASE DE DATOS
     //---------------------------------------------------------------------------------------------------------
-    func crearBD()
+    func crearBDUsu()
     {
         //INDICAMOS DONDE SE GUARDARA LA BASE DE DATOS Y EL NOMBRE DE ESTAS
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         }
         else {//SI PODEMOS CONECTARNOS A LA BASE DE DATOS CREAREMOS LA ESTRUCTURA DE ESTA, SI NO EXISTIERA NO SE HARIA NADA
             print("base abierta")
-            if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Usuarios (usuario TEXT PRIMARY KEY AUTOINCREMENT, contrasenia TEXT)", nil, nil, nil) != SQLITE_OK {
+            if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Usuarios (usuario TEXT PRIMARY KEY, contrasenia TEXT)", nil, nil, nil) != SQLITE_OK {
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
                 print("error creating table: \(errmsg)")
             }
@@ -44,36 +44,7 @@ class ViewController: UIViewController {
         
         
     }
-    /*
-    func insertar()  {
-        //CREAMOS EL PUNTERO DE INSTRUCCIÓN
-        var stmt: OpaquePointer?
-        
-        //CREAMOS NUESTRA SENTENCIA
-        let queryString = "INSERT INTO Historial (url) VALUES ("+"'"+String(barraDeBusqueda.text!)+"')"
-        //PREPARAMOS LA SENTENCIA
-        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print(queryString)
-            print("error preparing insert: \(errmsg)")
-            return
-        }
-        
-        
-        //EJECUTAMOS LA SENTENCIA PARA INSERTAR LOS VALORES
-        if sqlite3_step(stmt) != SQLITE_DONE {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("fallo al insertar en historial: \(errmsg)")
-            return
-        }
-        
-        //FINALIZAMOS LA SENTENCIA
-        sqlite3_finalize(stmt)
-        //displaying a success message
-        print("Histo saved successfully")
-        
-    }
- */
+
     func leerValores(){
         
         

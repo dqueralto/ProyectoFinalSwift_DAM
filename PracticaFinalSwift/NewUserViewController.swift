@@ -25,7 +25,7 @@ class NewUserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        conectarDB()
+        conectarDBUsu()
         
     }
     
@@ -46,7 +46,7 @@ class NewUserViewController: UIViewController {
     
     
     //---------------------------------------------------------------------------------------------------------
-    func conectarDB()
+    func conectarDBUsu()
     {
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("Usuarios.sqlite")
@@ -56,7 +56,7 @@ class NewUserViewController: UIViewController {
         }
         else {
             print("base abierta")
-            if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Usuarios (usuario TEXT PRIMARY KEY AUTOINCREMENT, contrasenia TEXT)", nil, nil, nil) != SQLITE_OK {
+            if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Usuarios (usuario TEXT PRIMARY KEY, contrasenia TEXT)", nil, nil, nil) != SQLITE_OK {
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
                 print("error creating table: \(errmsg)")
             }
