@@ -12,10 +12,11 @@ import SQLite3
 class LoginViewController: UIViewController {
     var db: OpaquePointer?
     var usuarios = [Usu]()
-    var existe = false
+    
     @IBOutlet weak var usuario: UITextField!
     @IBOutlet weak var contrasenia: UITextField!
     @IBOutlet weak var alerta: UILabel!
+    @IBOutlet weak var alerta2: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,38 +32,38 @@ class LoginViewController: UIViewController {
     
     @IBAction func conectar(_ sender: Any)
     {
-        //let viewController = self.storyboard!.instantiateViewController(withIdentifier: "contenido1") as! ContenidoViewController
-        //self.navigationController?.pushViewController(viewController, animated: true)
-
+        print("0")
         for usu in usuarios
         {
-            print("0")
-            print(usu.usuario+"1")
-            print(usu.contrasenia+"1")
-            print(usuario.text!+"2")
-            print(contrasenia.text!+"2")
-
-            if (usuario.text!.elementsEqual(usu.usuario) && contrasenia.text!.elementsEqual(usu.contrasenia))
+            alerta.isHidden = true
+            alerta2.isHidden = true
+            print("1")
+            print(usu.usuario)
+            print(usu.contrasenia)
+            if (usuario.text!.elementsEqual(usu.usuario) )
             {
-                print("1")
-
-                alerta.isHidden = true
-                
                 print("2")
-                existe=true
-                let viewController = self.storyboard!.instantiateViewController(withIdentifier: "contenido1") as! ContenidoViewController
-                self.navigationController?.pushViewController(viewController, animated: true)
-                
-                
-            }else{existe=false}
+                if contrasenia.text!.elementsEqual(usu.contrasenia)
+                {
+                    print("3")
+                    let viewController = self.storyboard!.instantiateViewController(withIdentifier: "contenido1") as! ContenidoViewController
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                    //return
+                }
+                else
+                {
+                    print("4")
+                    alerta2.isHidden = false
+                    //return
+                }
+            }
+            else
+            {
+                print("5")
+                alerta.isHidden = false
+                //return
+            }
         }
-        if !existe
-        {
-            print("3")
-            alerta.isHidden = false
-            return
-        }
-
         
     }
 

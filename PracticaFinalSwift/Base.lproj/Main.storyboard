@@ -61,9 +61,16 @@
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contraseña erronea" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIn-VC-kRg">
+                                <rect key="frame" x="20" y="471" width="374" height="102"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="vIn-VC-kRg" firstAttribute="top" secondItem="AaA-Wr-UiV" secondAttribute="bottom" constant="8" id="6QD-di-feJ"/>
                             <constraint firstItem="dqA-eq-JXQ" firstAttribute="trailing" secondItem="Dcn-hC-Yd0" secondAttribute="trailing" constant="50" id="6aJ-1J-CIe"/>
                             <constraint firstItem="PEq-Q3-Ypa" firstAttribute="leading" secondItem="dqA-eq-JXQ" secondAttribute="leading" constant="50" id="6iX-zb-iqa"/>
                             <constraint firstItem="lo5-LA-4fd" firstAttribute="top" secondItem="AaA-Wr-UiV" secondAttribute="bottom" constant="8" id="91c-hT-O4A"/>
@@ -75,8 +82,11 @@
                             <constraint firstItem="9MY-64-XKy" firstAttribute="leading" secondItem="dqA-eq-JXQ" secondAttribute="leading" constant="44" id="KfU-eH-cW7"/>
                             <constraint firstItem="PEq-Q3-Ypa" firstAttribute="top" secondItem="9MY-64-XKy" secondAttribute="bottom" constant="103" id="Kgn-qr-npL"/>
                             <constraint firstItem="dqA-eq-JXQ" firstAttribute="trailing" secondItem="AaA-Wr-UiV" secondAttribute="trailing" constant="175" id="NFz-bc-tTr"/>
+                            <constraint firstItem="dqA-eq-JXQ" firstAttribute="bottom" secondItem="vIn-VC-kRg" secondAttribute="bottom" constant="289" id="NeY-hq-QzN"/>
+                            <constraint firstItem="vIn-VC-kRg" firstAttribute="leading" secondItem="dqA-eq-JXQ" secondAttribute="leading" constant="20" id="OHi-h1-bpP"/>
                             <constraint firstItem="Dcn-hC-Yd0" firstAttribute="leading" secondItem="dqA-eq-JXQ" secondAttribute="leading" constant="50" id="P9H-vs-fAY"/>
                             <constraint firstItem="dqA-eq-JXQ" firstAttribute="bottom" secondItem="lo5-LA-4fd" secondAttribute="bottom" constant="289" id="Q7f-kK-ovO"/>
+                            <constraint firstItem="dqA-eq-JXQ" firstAttribute="trailing" secondItem="vIn-VC-kRg" secondAttribute="trailing" constant="20" id="TWk-4K-lef"/>
                             <constraint firstItem="FUy-ZX-R0G" firstAttribute="leading" secondItem="dqA-eq-JXQ" secondAttribute="leading" constant="50" id="XRG-xF-dzH"/>
                             <constraint firstItem="FUy-ZX-R0G" firstAttribute="top" secondItem="Dcn-hC-Yd0" secondAttribute="bottom" constant="8" id="azY-BJ-chM"/>
                             <constraint firstItem="9MY-64-XKy" firstAttribute="top" secondItem="dqA-eq-JXQ" secondAttribute="top" id="b3m-GT-bg3"/>
@@ -92,6 +102,7 @@
                     </view>
                     <connections>
                         <outlet property="alerta" destination="lo5-LA-4fd" id="Mjc-Ga-hTm"/>
+                        <outlet property="alerta2" destination="vIn-VC-kRg" id="VVb-LG-hv0"/>
                         <outlet property="contrasenia" destination="VN1-s4-eHL" id="Kmq-FX-Fsg"/>
                         <outlet property="usuario" destination="Dcn-hC-Yd0" id="Ohs-v2-9St"/>
                     </connections>
@@ -266,6 +277,12 @@
                                 <color key="textColor" red="0.0" green="0.76824238578680204" blue="0.065089001682651498" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No coinciden las contraseñas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRT-BZ-G8k">
+                                <rect key="frame" x="20" y="471" width="374" height="102"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -276,6 +293,7 @@
                             <constraint firstItem="QTe-o2-rC9" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="20" id="9sK-l0-OVD"/>
                             <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="qck-bw-YFP" secondAttribute="trailing" constant="20" id="AZF-0S-0tN"/>
                             <constraint firstItem="ZC8-Lm-lDq" firstAttribute="top" secondItem="Kfz-Z7-GwG" secondAttribute="top" id="BEF-pV-Xhy"/>
+                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="bottom" secondItem="bRT-BZ-G8k" secondAttribute="bottom" constant="289" id="Bgb-AW-34Z"/>
                             <constraint firstItem="QTe-o2-rC9" firstAttribute="top" secondItem="SuD-U7-oNz" secondAttribute="bottom" constant="8" id="DPv-F4-3p5"/>
                             <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="SuD-U7-oNz" secondAttribute="trailing" constant="50" id="Eub-4p-fQZ"/>
                             <constraint firstItem="jWi-P9-SNH" firstAttribute="top" secondItem="paz-2P-x5W" secondAttribute="bottom" constant="8" id="FWu-PP-HRs"/>
@@ -290,15 +308,18 @@
                             <constraint firstItem="rJt-55-DwN" firstAttribute="top" secondItem="QTe-o2-rC9" secondAttribute="bottom" constant="8" id="ThT-QI-gVa"/>
                             <constraint firstItem="ZC8-Lm-lDq" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="64" id="Vmp-HY-9dm"/>
                             <constraint firstItem="HFn-Ks-OsK" firstAttribute="top" secondItem="9eJ-ig-hlY" secondAttribute="bottom" constant="8" id="XbK-pI-eBj"/>
+                            <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="bRT-BZ-G8k" secondAttribute="trailing" constant="20" id="Zc5-Y1-HNL"/>
                             <constraint firstItem="Kfz-Z7-GwG" firstAttribute="bottom" secondItem="9eJ-ig-hlY" secondAttribute="bottom" constant="399" id="bPS-xw-FQA"/>
                             <constraint firstItem="g7i-7n-Mex" firstAttribute="top" secondItem="9eJ-ig-hlY" secondAttribute="bottom" constant="8" id="dLc-3Q-mhs"/>
                             <constraint firstItem="9eJ-ig-hlY" firstAttribute="top" secondItem="qck-bw-YFP" secondAttribute="bottom" constant="37" id="dRW-5h-Ugv"/>
+                            <constraint firstItem="bRT-BZ-G8k" firstAttribute="top" secondItem="9eJ-ig-hlY" secondAttribute="bottom" constant="8" id="dSj-9h-jhw"/>
                             <constraint firstItem="Kfz-Z7-GwG" firstAttribute="bottom" secondItem="HFn-Ks-OsK" secondAttribute="bottom" constant="289" id="erB-gr-uqn"/>
                             <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="HFn-Ks-OsK" secondAttribute="trailing" constant="20" id="fDb-9b-wGq"/>
                             <constraint firstItem="rJt-55-DwN" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="50" id="g3Q-ch-o4b"/>
                             <constraint firstItem="paz-2P-x5W" firstAttribute="top" secondItem="ZC8-Lm-lDq" secondAttribute="bottom" constant="43" id="nlM-aa-9rg"/>
                             <constraint firstItem="Kfz-Z7-GwG" firstAttribute="trailing" secondItem="ZC8-Lm-lDq" secondAttribute="trailing" constant="64" id="nya-ma-eTa"/>
                             <constraint firstItem="9eJ-ig-hlY" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="168" id="oXc-lQ-unM"/>
+                            <constraint firstItem="bRT-BZ-G8k" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="20" id="wVk-kb-sNP"/>
                             <constraint firstItem="SuD-U7-oNz" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="50" id="y8S-xY-RaM"/>
                             <constraint firstItem="jWi-P9-SNH" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="20" id="zOb-Uj-ERj"/>
                             <constraint firstItem="g7i-7n-Mex" firstAttribute="leading" secondItem="Kfz-Z7-GwG" secondAttribute="leading" constant="20" id="zU3-cj-74d"/>
@@ -308,6 +329,7 @@
                     <connections>
                         <outlet property="alerta" destination="g7i-7n-Mex" id="cbD-dh-12K"/>
                         <outlet property="alerta2" destination="HFn-Ks-OsK" id="ETN-zW-pXa"/>
+                        <outlet property="alerta3" destination="bRT-BZ-G8k" id="qxh-Sc-xPo"/>
                         <outlet property="confirmarContrasenia" destination="qck-bw-YFP" id="FVU-aS-iVh"/>
                         <outlet property="contrasenia" destination="QTe-o2-rC9" id="GAp-R1-RT2"/>
                         <outlet property="usuario" destination="jWi-P9-SNH" id="Mmw-mX-DcH"/>

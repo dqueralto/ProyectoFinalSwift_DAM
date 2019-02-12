@@ -22,6 +22,7 @@ class NewUserViewController: UIViewController {
     
     @IBOutlet weak var alerta2: UILabel!
     
+    @IBOutlet weak var alerta3: UILabel!
     
     
     override func viewDidLoad() {
@@ -39,22 +40,27 @@ class NewUserViewController: UIViewController {
     
     @IBAction func nuevo(_ sender: Any)
     {
+        //leerValores()
+        print("000")
         for usu in usuarios
         {
+            alerta.isHidden = true
+            alerta2.isHidden = true
+            alerta3.isHidden = true
             print("1")
             print(usu.usuario)
             print(usu.contrasenia)
-            if usu.usuario.elementsEqual(usuario.text!)
+            if !contrasenia.text!.elementsEqual(confirmarContrasenia.text!)
             {
                 print("2")
-                print("Usuario Existente")
-                alerta.isHidden = false
-                alerta2.isHidden = true
+                print("No Coinciden las Contraseña")
+                alerta3.isHidden = false
                 return
-            }else if contrasenia.text!.elementsEqual(confirmarContrasenia.text!)
+                
+            }else
             {
                 print("3")
-                alerta.isHidden = true
+                //alerta.isHidden = true
                 alerta2.isHidden = false
                 print(usuario.text!)
                 print(contrasenia.text!)
@@ -91,7 +97,7 @@ class NewUserViewController: UIViewController {
         var stmt: OpaquePointer?
         
         //CREAMOS NUESTRA SENTENCIA
-        let queryString = "INSERT INTO Usuarios (usuario,contrasenia) VALUES ("+"'"+String(usuario.text!)+"','"+String(contrasenia.text!)+" ')"
+        let queryString = "INSERT INTO Usuarios VALUES ('"+String(usuario.text!)+"','"+String(contrasenia.text!)+"')"
         //PREPARAMOS LA SENTENCIA
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
@@ -105,6 +111,9 @@ class NewUserViewController: UIViewController {
         if sqlite3_step(stmt) != SQLITE_DONE {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("fallo al insertar en usuarios: \(errmsg)")
+            alerta2.isHidden = true
+            alerta3.isHidden = true
+            alerta.isHidden = false
             return
         }
         
