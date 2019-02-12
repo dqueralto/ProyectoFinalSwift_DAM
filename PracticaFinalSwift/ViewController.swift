@@ -22,6 +22,12 @@ class ViewController: UIViewController {
         backItem.title = "Atras"
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
     }
+
+    
+    @IBAction func eliminar(_ sender: Any)
+    {
+        eliminarUsuarios()
+    }
     
     //BASE DE DATOS
     //---------------------------------------------------------------------------------------------------------
@@ -71,6 +77,36 @@ class ViewController: UIViewController {
             //AÑADIMOS LOS VALORES A LA LISTA
             usuarios.append(Usu(usuario: String(describing: usuario), contrasenia: String(describing: contrasenia)))
         }
+    }
+    
+    func eliminarUsuarios()
+    {
+        //GUARDAMOS NUESTRA CONSULTA
+        let queryString = "DELETE FROM Usuarios"
+        //CREAMOS EL PUNTERO DE INSTRUCCIÓN
+        var deleteStatement: OpaquePointer? = nil
+        
+        //PREPARACIÓN DE LA CONSULTA
+        if sqlite3_prepare(db, queryString, -1, &deleteStatement, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print(queryString)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        //ELIMINAMOS LOS REGISTROS
+        if sqlite3_prepare_v2(db, queryString, -1, &deleteStatement, nil) == SQLITE_OK {
+            if sqlite3_step(deleteStatement) == SQLITE_DONE {
+                print("Successfully deleted row.")
+            } else {
+                print("Could not delete row.")
+            }
+        } else {
+            print("DELETE statement could not be prepared")
+        }
+        
+        //FINALIZAMOS LA SENTENCIA
+        sqlite3_finalize(deleteStatement)
+        
     }
     //---------------------------------------------------------------------------------------------------------
 

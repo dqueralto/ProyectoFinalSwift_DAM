@@ -18,40 +18,55 @@ class NewUserViewController: UIViewController {
     @IBOutlet weak var confirmarContrasenia: UITextField!
     @IBOutlet weak var contrasenia: UITextField!
     
+    @IBOutlet weak var alerta: UILabel!
     
+    @IBOutlet weak var alerta2: UILabel!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //conectarDBUsu()
-        
+        conectarDBUsu()
+        for usu in usuarios
+        {
+            print(usu.usuario)
+            print(usu.contrasenia)
+        }
         
         
     }
     
     @IBAction func nuevo(_ sender: Any)
     {
-        /*for usu in usuarios.reversed()
+        for usu in usuarios
         {
-            if usu.usuario == usuario.text!
+            print("1")
+            print(usu.usuario)
+            print(usu.contrasenia)
+            if usu.usuario.elementsEqual(usuario.text!)
             {
+                print("2")
                 print("Usuario Existente")
-            }else*/ if contrasenia.text!.contains(confirmarContrasenia.text!)
+                alerta.isHidden = false
+                alerta2.isHidden = true
+                return
+            }else if contrasenia.text!.elementsEqual(confirmarContrasenia.text!)
             {
+                print("3")
+                alerta.isHidden = true
+                alerta2.isHidden = false
                 print(usuario.text!)
                 print(contrasenia.text!)
                 print(confirmarContrasenia.text!)
-                
-                //insertar()
+                insertar()
+                return
             }
-                    
-        //}
+        }
     }
     
     
-    /*
+    
     //---------------------------------------------------------------------------------------------------------
     func conectarDBUsu()
     {
@@ -89,7 +104,7 @@ class NewUserViewController: UIViewController {
         //EJECUTAMOS LA SENTENCIA PARA INSERTAR LOS VALORES
         if sqlite3_step(stmt) != SQLITE_DONE {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("fallo al insertar en historial: \(errmsg)")
+            print("fallo al insertar en usuarios: \(errmsg)")
             return
         }
         
@@ -102,9 +117,7 @@ class NewUserViewController: UIViewController {
     }
     
     func leerValores(){
-        
 
-        
         //GUARDAMOS NUESTRA CONSULTA
         let queryString = "SELECT * FROM Usuarios"
         
@@ -130,7 +143,7 @@ class NewUserViewController: UIViewController {
         
     }
     //---------------------------------------------------------------------------------------------------------
-*/
+
 }
 
 
