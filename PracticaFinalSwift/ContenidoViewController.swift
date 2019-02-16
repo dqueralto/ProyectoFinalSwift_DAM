@@ -9,10 +9,14 @@
 import UIKit
 
 class ContenidoViewController: UIViewController {
-
+    var datos=""
+    @IBOutlet weak var lUsuario: UILabel!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        lUsuario.text = datos
         // Do any additional setup after loading the view.
     }
 

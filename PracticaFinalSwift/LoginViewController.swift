@@ -29,6 +29,15 @@ class LoginViewController: UIViewController {
         
         
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "data"
+        {
+            print("data")
+            let contenido = segue.destination as! ContenidoViewController
+            contenido.datos = self.usuario.text!
+        }
+    }
     
     @IBAction func conectar(_ sender: Any)
     {
@@ -46,8 +55,11 @@ class LoginViewController: UIViewController {
                 if contrasenia.text!.elementsEqual(usu.contrasenia)
                 {
                     print("3")
+                    
                     let viewController = self.storyboard!.instantiateViewController(withIdentifier: "contenido1") as! ContenidoViewController
+                    
                     self.navigationController?.pushViewController(viewController, animated: true)
+                    //performSegue(withIdentifier: "data", sender: self)
                     //return
                 }
                 else
