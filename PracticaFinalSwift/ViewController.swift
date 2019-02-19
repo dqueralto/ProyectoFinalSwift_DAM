@@ -142,7 +142,8 @@ class ViewController: UIViewController {
 
 }
 
-class Usu{
+class Usu
+{
     
     var usuario: String
     var contrasenia: String

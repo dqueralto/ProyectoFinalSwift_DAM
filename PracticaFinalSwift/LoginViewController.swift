@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
         
         
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.identifier == "data"
         {
@@ -37,10 +37,10 @@ class LoginViewController: UIViewController {
             let contenido = segue.destination as! ContenidoViewController
             contenido.datos = self.usuario.text!
         }
-    }
+    }*/
     
-    @IBAction func conectar(_ sender: Any)
-    {
+    @IBAction func conectar(_ sender: Any) {
+
         print("0")
         for usu in usuarios
         {
@@ -55,10 +55,23 @@ class LoginViewController: UIViewController {
                 if contrasenia.text!.elementsEqual(usu.contrasenia)
                 {
                     print("3")
-                    
-                    let viewController = self.storyboard!.instantiateViewController(withIdentifier: "contenido1") as! ContenidoViewController
+                    if usu.usuario == "admin"
+                    {
+                        print("3.1")
+                        performSegue(withIdentifier: "contenidoAdmin", sender: nil)
+                        return
+                        
+                    }else{
+                        print("3.2")
+                        performSegue(withIdentifier: "contenido", sender: nil)
+                        return
+                        
+                    }
+                    /*
+                    let viewController = self.storyboard!.instantiateViewController(withIdentifier: "contenido") as! ContenidoViewController
                     
                     self.navigationController?.pushViewController(viewController, animated: true)
+                    */
                     //performSegue(withIdentifier: "data", sender: self)
                     //return
                 }
@@ -77,6 +90,24 @@ class LoginViewController: UIViewController {
             }
         }
         
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "contenido"
+        {
+            if let vistaContenido = segue.destination as? ContenidoViewController
+            {
+                vistaContenido.usuario =  usuario.text!
+            }
+        }
+        
+        if segue.identifier == "contenidoAdmin"
+        {
+            if let vistaContenido = segue.destination as? ContenidoAdminViewController
+            {
+                vistaContenido.usuario =  usuario.text!
+            }
+        }
     }
 
 

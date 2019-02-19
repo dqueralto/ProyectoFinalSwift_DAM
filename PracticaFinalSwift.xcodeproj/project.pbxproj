@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F664882221C834F00D0938E /* ContenidoAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F664881221C834F00D0938E /* ContenidoAdminViewController.swift */; };
 		7FA2E7902204C1F90056CF60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA2E78F2204C1F90056CF60 /* AppDelegate.swift */; };
 		7FA2E7922204C1F90056CF60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA2E7912204C1F90056CF60 /* ViewController.swift */; };
 		7FA2E7952204C1F90056CF60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FA2E7932204C1F90056CF60 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F664881221C834F00D0938E /* ContenidoAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContenidoAdminViewController.swift; sourceTree = "<group>"; };
 		7FA2E78C2204C1F90056CF60 /* PracticaFinalSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticaFinalSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FA2E78F2204C1F90056CF60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FA2E7912204C1F90056CF60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				7FA2E7912204C1F90056CF60 /* ViewController.swift */,
 				7FA2E7C12204CF610056CF60 /* LoginViewController.swift */,
 				7FA2E7C32204D09B0056CF60 /* NewUserViewController.swift */,
+				7F664881221C834F00D0938E /* ContenidoAdminViewController.swift */,
 				7FA2E7C52208CA280056CF60 /* ContenidoViewController.swift */,
 				7FA2E7932204C1F90056CF60 /* Main.storyboard */,
 				7FA2E7962204C1FD0056CF60 /* Assets.xcassets */,
@@ -279,6 +282,7 @@
 			files = (
 				7FA2E7C62208CA280056CF60 /* ContenidoViewController.swift in Sources */,
 				7FA2E7C22204CF610056CF60 /* LoginViewController.swift in Sources */,
+				7F664882221C834F00D0938E /* ContenidoAdminViewController.swift in Sources */,
 				7FA2E7922204C1F90056CF60 /* ViewController.swift in Sources */,
 				7FA2E7C42204D09B0056CF60 /* NewUserViewController.swift in Sources */,
 				7FA2E7902204C1F90056CF60 /* AppDelegate.swift in Sources */,
