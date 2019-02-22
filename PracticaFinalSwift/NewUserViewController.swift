@@ -9,11 +9,12 @@
 import UIKit
 import SQLite3
 
-class NewUserViewController: UIViewController {
+class NewUserViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var db: OpaquePointer?
     var usuarios = [Usu]()
+    var pickerData: [String] = [String]()
+    var tipo: String = ""
     
-
     @IBOutlet weak var usuario: UITextField!
     @IBOutlet weak var confirmarContrasenia: UITextField!
     @IBOutlet weak var contrasenia: UITextField!
@@ -24,6 +25,8 @@ class NewUserViewController: UIViewController {
     
     @IBOutlet weak var alerta3: UILabel!
     
+    @IBOutlet weak var picker: UIPickerView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +36,12 @@ class NewUserViewController: UIViewController {
         {
             print(usu.usuario)
             print(usu.contrasenia)
+            print(usu.tipo)
+            
         }
+        pickerData = ["ADMINISTRADOR", "USUARIO"]
+        self.picker.delegate = self
+        self.picker.dataSource = self
         
         
     }
@@ -97,7 +105,7 @@ class NewUserViewController: UIViewController {
         var stmt: OpaquePointer?
         
         //CREAMOS NUESTRA SENTENCIA
-        let queryString = "INSERT INTO Usuarios VALUES ('"+String(usuario.text!)+"','"+String(contrasenia.text!)+"')"
+        let queryString = "INSERT INTO Usuarios VALUES ('"+String(usuario.text!)+"','"+String(contrasenia.text!)+"','"+tipo+"')"
         //PREPARAMOS LA SENTENCIA
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
@@ -144,15 +152,50 @@ class NewUserViewController: UIViewController {
         while(sqlite3_step(stmt) == SQLITE_ROW){
             let usuario = String(cString: sqlite3_column_text(stmt, 0))
             let contrasenia = String(cString: sqlite3_column_text(stmt, 1))
-            
+            let tipo = String(cString: sqlite3_column_text(stmt, 2))
+
             
             //AÑADIMOS LOS VALORES A LA LISTA
-            usuarios.append(Usu(usuario: String(describing: usuario), contrasenia: String(describing: contrasenia)))
+            usuarios.append(Usu(usuario: String(describing: usuario), contrasenia: String(describing: contrasenia),tipo: String(describing: tipo)))
         }
         
     }
     //---------------------------------------------------------------------------------------------------------
 
+    
+    //LISTA----------------------------------------------------------------------------------------------------
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // Number of columns of data
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int{
+        return 1
+    }
+    
+    // The number of rows of data
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        return pickerData.count
+    }
+    
+    
+    // The data to return fopr the row and component (column) that's being passed in
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        if pickerData[row].elementsEqual("ADMINISTRADOR") {
+            tipo = "A"
+        }else{
+            tipo = "U"
+        }
+        
+    }
+    //---------------------------------------------------------------------------------------------------------
+
+    
 }
 
 
