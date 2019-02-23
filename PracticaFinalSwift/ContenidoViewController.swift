@@ -20,24 +20,10 @@ class ContenidoViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let backItem = UIBarButtonItem()
-        backItem.title = "Atras"
-        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
-    }*/
-
-    
-  
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //LE INDICAMOS QUE CUANDO TOQUEMOS EN ALGUNA PARTE DE LA VISTA CIERRE EL TECLADO
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.view.endEditing(true)
     }
-    */
 
 }

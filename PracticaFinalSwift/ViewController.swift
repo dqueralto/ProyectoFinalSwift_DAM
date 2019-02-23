@@ -92,7 +92,12 @@ class ViewController: UIViewController {
     
 
     //---------------------------------------------------------------------------------------------------------
-
+    
+    //LE INDICAMOS QUE CUANDO TOQUEMOS EN ALGUNA PARTE DE LA VISTA CIERRE EL TECLADO
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.view.endEditing(true)
+    }
 }
 
 class Usu

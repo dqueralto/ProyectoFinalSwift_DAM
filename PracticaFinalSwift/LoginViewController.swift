@@ -38,7 +38,11 @@ class LoginViewController: UIViewController {
 
     
     @IBAction func conectar(_ sender: Any) {
-
+        conectarDBUsu()
+        if usuarios.count == 0
+        {
+            insertarAdmin()
+        }
         print("0")
         for usu in usuarios
         {
@@ -184,5 +188,9 @@ class LoginViewController: UIViewController {
     }
     //---------------------------------------------------------------------------------------------------------
 
-
+    //LE INDICAMOS QUE CUANDO TOQUEMOS EN ALGUNA PARTE DE LA VISTA CIERRE EL TECLADO
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.view.endEditing(true)
+    }
 }

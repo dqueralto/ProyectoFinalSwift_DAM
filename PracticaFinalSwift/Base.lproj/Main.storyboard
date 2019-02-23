@@ -202,7 +202,7 @@
                                 </constraints>
                                 <state key="normal" title="Visualizar Usuario"/>
                                 <connections>
-                                    <segue destination="7ZY-DI-XA4" kind="show" id="nx9-BD-38t"/>
+                                    <segue destination="dVw-rH-oqI" kind="show" id="FbY-kH-Ooi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YmS-XX-alK">
@@ -318,35 +318,102 @@
             </objects>
             <point key="canvasLocation" x="4406" y="-1441"/>
         </scene>
-        <!--View Controller-->
+        <!--Eliminar Usuario View Controller-->
         <scene sceneID="nId-Gd-SRr">
             <objects>
-                <viewController id="cIx-8c-DoU" sceneMemberID="viewController">
+                <viewController id="cIx-8c-DoU" customClass="EliminarUsuarioViewController" customModule="PracticaFinalSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D5R-ly-8f2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="abL-4v-Lpz">
+                                <rect key="frame" x="0.0" y="88" width="414" height="636"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celdilla" id="PjE-7G-sj2">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PjE-7G-sj2" id="ewU-sr-NBF">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="cIx-8c-DoU" id="XSC-wN-QU0"/>
+                                    <outlet property="delegate" destination="cIx-8c-DoU" id="Tfo-af-fwd"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yd0-hd-vCp">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="IXh-F6-6JP"/>
+                                    <barButtonItem systemItem="trash" id="KCJ-O5-3hr">
+                                        <connections>
+                                            <action selector="borrarUsu:" destination="cIx-8c-DoU" id="Cbf-gC-qGA"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eN9-ob-kFf"/>
+                                </items>
+                            </toolbar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Al pulsar sobre el icono de la papelera se borrara el usuario seleccionado." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QjE-fC-oQk">
+                                <rect key="frame" x="0.0" y="721" width="414" height="92"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yd0-hd-vCp" firstAttribute="leading" secondItem="qgf-Db-Hvy" secondAttribute="leading" id="AjA-VZ-aJZ"/>
+                            <constraint firstItem="QjE-fC-oQk" firstAttribute="leading" secondItem="qgf-Db-Hvy" secondAttribute="leading" id="Qu3-Lv-x1x"/>
+                            <constraint firstItem="abL-4v-Lpz" firstAttribute="trailing" secondItem="qgf-Db-Hvy" secondAttribute="trailing" id="Sdq-b0-B43"/>
+                            <constraint firstItem="yd0-hd-vCp" firstAttribute="trailing" secondItem="qgf-Db-Hvy" secondAttribute="trailing" id="Tdc-Zf-Lnd"/>
+                            <constraint firstItem="abL-4v-Lpz" firstAttribute="leading" secondItem="qgf-Db-Hvy" secondAttribute="leading" id="TtT-D0-Al4"/>
+                            <constraint firstItem="yd0-hd-vCp" firstAttribute="top" secondItem="QjE-fC-oQk" secondAttribute="bottom" id="U7C-LA-NUK"/>
+                            <constraint firstItem="QjE-fC-oQk" firstAttribute="top" secondItem="qgf-Db-Hvy" secondAttribute="top" constant="633" id="YRj-4n-fdg"/>
+                            <constraint firstItem="abL-4v-Lpz" firstAttribute="top" secondItem="qgf-Db-Hvy" secondAttribute="top" id="fQO-4r-DX6"/>
+                            <constraint firstItem="yd0-hd-vCp" firstAttribute="top" secondItem="abL-4v-Lpz" secondAttribute="bottom" constant="89" id="i2P-1x-swu"/>
+                            <constraint firstItem="yd0-hd-vCp" firstAttribute="bottom" secondItem="qgf-Db-Hvy" secondAttribute="bottom" id="jZq-rK-3Ae"/>
+                            <constraint firstItem="QjE-fC-oQk" firstAttribute="trailing" secondItem="qgf-Db-Hvy" secondAttribute="trailing" id="kwg-xx-bKp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qgf-Db-Hvy"/>
                     </view>
+                    <connections>
+                        <outlet property="tabla" destination="abL-4v-Lpz" id="P1k-4g-8P5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHs-vl-nt2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3777" y="-1762"/>
+            <point key="canvasLocation" x="3776.811594202899" y="-1762.5"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="YF8-wF-jlg">
+        <!--Visualizar Usuarios Table View Controller-->
+        <scene sceneID="rk4-ok-hRp">
             <objects>
-                <viewController id="7ZY-DI-XA4" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="VxX-id-Y4r">
+                <tableViewController id="dVw-rH-oqI" customClass="VisualizarUsuariosTableViewController" customModule="PracticaFinalSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="v3b-B9-hQk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="kUZ-Cd-17u"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ivB-p7-hQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celdilla" id="3FC-wV-diQ">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3FC-wV-diQ" id="I1y-xR-Duf">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dVw-rH-oqI" id="0kx-A5-ZnX"/>
+                            <outlet property="delegate" destination="dVw-rH-oqI" id="tSJ-Ci-iUl"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CFB-u4-lgu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3141" y="-2077"/>
+            <point key="canvasLocation" x="3146" y="-2091"/>
         </scene>
         <!--Contenido View Controller-->
         <scene sceneID="6lr-qZ-tq3">
