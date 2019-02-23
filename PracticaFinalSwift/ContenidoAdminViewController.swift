@@ -26,7 +26,7 @@ class ContenidoAdminViewController: UIViewController {
     func conectarDBUsu()
     {
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            .appendingPathComponent("Usuarios.sqlite")
+            .appendingPathComponent("Datos.sqlite")
         
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
             print("error opening database")
@@ -74,6 +74,9 @@ class ContenidoAdminViewController: UIViewController {
     @IBAction func borrarTodosUsuarios(_ sender: Any)
     {
         eliminarUsuarios()
+
+        insertarAdmin()
+
     }
     
     func eliminarUsuarios()
@@ -104,6 +107,35 @@ class ContenidoAdminViewController: UIViewController {
         //FINALIZAMOS LA SENTENCIA
         sqlite3_finalize(deleteStatement)
         //insertarAdmin()
+    }
+    func insertarAdmin()  {
+        //CREAMOS EL PUNTERO DE INSTRUCCIÓN
+        var stmt: OpaquePointer?
+        
+        //CREAMOS NUESTRA SENTENCIA
+        let queryString = "INSERT INTO Usuarios (usuario,contrasenia,tipo) VALUES ('admin','admin','A')"
+        //PREPARAMOS LA SENTENCIA
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print(queryString)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        
+        //EJECUTAMOS LA SENTENCIA PARA INSERTAR LOS VALORES
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("fallo al insertar en usuarios: \(errmsg)")
+            return
+        }
+        
+        //FINALIZAMOS LA SENTENCIA
+        sqlite3_finalize(stmt)
+        print("Insertado")
+        //displaying a success message
+        print("Histo saved successfully")
+        
     }
     //---------------------------------------------------------------------------------------------------------
 

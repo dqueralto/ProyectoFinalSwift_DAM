@@ -113,7 +113,7 @@ class LoginViewController: UIViewController {
     func conectarDBUsu()
     {
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            .appendingPathComponent("Usuarios.sqlite")
+            .appendingPathComponent("Datos.sqlite")
         
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
             print("error opening database")

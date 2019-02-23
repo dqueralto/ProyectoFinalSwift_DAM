@@ -8,14 +8,17 @@
 
 import UIKit
 import SQLite3
+
 class ViewController: UIViewController {
     var db: OpaquePointer?
     var usuarios = [Usu]()
+    var contenido = [Contenido]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        crearBDUsu()
+        crearBD()
+        crearBDContenido()
         //insertarAdmin()
 
         for usu in usuarios.reversed()
@@ -23,7 +26,6 @@ class ViewController: UIViewController {
             print(usu.usuario)
             print(usu.contrasenia)
             print(usu.tipo)
-            
         }
     }
     //MODIFICAMOS EL NOMBRE DEL BOTON DE RETROCESO
@@ -33,17 +35,13 @@ class ViewController: UIViewController {
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
     }
 
-    
-
-    
-
     //BASE DE DATOS
     //---------------------------------------------------------------------------------------------------------
-    func crearBDUsu()
+    func crearBD()
     {
         //INDICAMOS DONDE SE GUARDARA LA BASE DE DATOS Y EL NOMBRE DE ESTAS
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            .appendingPathComponent("Usuarios.sqlite")
+            .appendingPathComponent("Datos.sqlite")
         //INDICAMOS SI DIERA ALGUN FALLO AL CONECTARSE
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
             print("error al abrir la base de datos")
@@ -56,6 +54,27 @@ class ViewController: UIViewController {
             }
         }
         leerValores()
+        
+        
+    }
+    
+    func crearBDContenido()
+    {
+        //INDICAMOS DONDE SE GUARDARA LA BASE DE DATOS Y EL NOMBRE DE ESTAS
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            .appendingPathComponent("Datos.sqlite")
+        //INDICAMOS SI DIERA ALGUN FALLO AL CONECTARSE
+        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
+            print("error al abrir la base de datos")
+        }
+        else {//SI PODEMOS CONECTARNOS A LA BASE DE DATOS CREAREMOS LA ESTRUCTURA DE ESTA, SI NO EXISTIERA NO SE HARIA NADA
+            print("base abierta")
+            if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Contenido (titulo TEXT PRIMARY KEY, descripcion TEXT,autor TEXT)", nil, nil, nil) != SQLITE_OK {
+                let errmsg = String(cString: sqlite3_errmsg(db)!)
+                print("error creating table: \(errmsg)")
+            }
+        }
+        leerValoresContenido()
         
         
     }
@@ -88,6 +107,34 @@ class ViewController: UIViewController {
         }
     }
     
+    func leerValoresContenido(){
+        
+        
+        //GUARDAMOS NUESTRA CONSULTA
+        let queryString = "SELECT * FROM Contenido"
+        
+        //PUNTERO DE INSTRUCCIÓN
+        var stmt:OpaquePointer?
+        
+        //PREPARACIÓN DE LA CONSULTA
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        //RECORREMOS LOS REGISTROS
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            let titulo = String(cString: sqlite3_column_text(stmt, 0))
+            let descricion = String(cString: sqlite3_column_text(stmt, 1))
+            let autor = String(cString: sqlite3_column_text(stmt, 2))
+            
+            
+            //AÑADIMOS LOS VALORES A LA LISTA
+            contenido.append(Contenido(titulo: String(describing: titulo), descripcion: String(describing: descricion), autor: String(describing: autor)))
+        }
+    }
+    
 
     
 
@@ -112,6 +159,22 @@ class Usu
         self.usuario = usuario
         self.contrasenia = contrasenia
         self.tipo = tipo
+    }
+    
+}
+
+class Contenido
+{
+    
+    var titulo: String
+    var descripcion: String
+    var autor: String
+    
+    init (titulo: String, descripcion: String, autor: String)
+    {
+        self.titulo = titulo
+        self.descripcion = descripcion
+        self.autor = autor
     }
     
 }

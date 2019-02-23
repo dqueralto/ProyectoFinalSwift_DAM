@@ -2,4 +2,129 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PracticaFinalSwift/VisualizarUsuariosTableViewController.swift"
+            timestampString = "572632329.461316"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PracticaFinalSwift.VisualizarUsuariosTableViewController.__allocating_init(style: __C.UITableViewStyle) -&gt; PracticaFinalSwift.VisualizarUsuariosTableViewController"
+                  moduleName = "PracticaFinalSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielqparra/Xcode/PracticaFinalSwift/PracticaFinalSwift/VisualizarUsuariosTableViewController.swift"
+                  timestampString = "572632329.477664"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PracticaFinalSwift.VisualizarUsuariosTableViewController.init(style: __C.UITableViewStyle) -&gt; PracticaFinalSwift.VisualizarUsuariosTableViewController"
+                  moduleName = "PracticaFinalSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielqparra/Xcode/PracticaFinalSwift/PracticaFinalSwift/VisualizarUsuariosTableViewController.swift"
+                  timestampString = "572632329.479322"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PracticaFinalSwift.VisualizarUsuariosTableViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; PracticaFinalSwift.VisualizarUsuariosTableViewController"
+                  moduleName = "PracticaFinalSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielqparra/Xcode/PracticaFinalSwift/PracticaFinalSwift/VisualizarUsuariosTableViewController.swift"
+                  timestampString = "572632329.48088"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PracticaFinalSwift.VisualizarUsuariosTableViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; PracticaFinalSwift.VisualizarUsuariosTableViewController"
+                  moduleName = "PracticaFinalSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielqparra/Xcode/PracticaFinalSwift/PracticaFinalSwift/VisualizarUsuariosTableViewController.swift"
+                  timestampString = "572632329.48252"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PracticaFinalSwift.VisualizarUsuariosTableViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;PracticaFinalSwift.VisualizarUsuariosTableViewController&gt;"
+                  moduleName = "PracticaFinalSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielqparra/Xcode/PracticaFinalSwift/PracticaFinalSwift/VisualizarUsuariosTableViewController.swift"
+                  timestampString = "572632329.484875"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PracticaFinalSwift.VisualizarUsuariosTableViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;PracticaFinalSwift.VisualizarUsuariosTableViewController&gt;"
+                  moduleName = "PracticaFinalSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielqparra/Xcode/PracticaFinalSwift/PracticaFinalSwift/VisualizarUsuariosTableViewController.swift"
+                  timestampString = "572632329.486914"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PracticaFinalSwift.VisualizarUsuariosTableViewController.__deallocating_deinit"
+                  moduleName = "PracticaFinalSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danielqparra/Xcode/PracticaFinalSwift/PracticaFinalSwift/VisualizarUsuariosTableViewController.swift"
+                  timestampString = "572632329.4885941"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

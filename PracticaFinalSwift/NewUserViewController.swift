@@ -13,7 +13,7 @@ class NewUserViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var db: OpaquePointer?
     var usuarios = [Usu]()
     var pickerData: [String] = [String]()
-    var tipo: String = ""
+    var tipo: String = "A"
     
     @IBOutlet weak var usuario: UITextField!
     @IBOutlet weak var confirmarContrasenia: UITextField!
@@ -73,10 +73,12 @@ class NewUserViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                 print(usuario.text!)
                 print(contrasenia.text!)
                 print(confirmarContrasenia.text!)
+                print(tipo)
                 insertar()
                 return
             }
         }
+        leerValores()
     }
     
     
@@ -85,7 +87,7 @@ class NewUserViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     func conectarDBUsu()
     {
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            .appendingPathComponent("Usuarios.sqlite")
+            .appendingPathComponent("Datos.sqlite")
         
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
             print("error opening database")
@@ -157,6 +159,10 @@ class NewUserViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             
             //AÑADIMOS LOS VALORES A LA LISTA
             usuarios.append(Usu(usuario: String(describing: usuario), contrasenia: String(describing: contrasenia),tipo: String(describing: tipo)))
+            
+            print(usuario)
+            print(contrasenia)
+            print(tipo)
         }
         
     }
@@ -188,7 +194,7 @@ class NewUserViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         if pickerData[row].elementsEqual("ADMINISTRADOR") {
             tipo = "A"
-        }else{
+        }else if pickerData[row].elementsEqual("USUARIO"){
             tipo = "U"
         }
         

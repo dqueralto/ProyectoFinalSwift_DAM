@@ -13,6 +13,8 @@ class VisualizarUsuariosTableViewController: UITableViewController {
     var db: OpaquePointer?
     var usuarios = [Usu]()
     var usu: [String] = []
+    var info: [[String]] = [[]]
+    let dataSub:[[String]]=[["Contraseña: ","Tipo: "]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,45 +22,57 @@ class VisualizarUsuariosTableViewController: UITableViewController {
         
         // Do any additional setup after loading the view.
     }
-    override func didReceiveMemoryWarning() {
+    
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func rellenarUsuInfo()
+    {
+        for us in usuarios
+        {
+            usu.append(us.usuario)//AÑADIMOS EL ESTRING "URL" A LA NUEVA COLECCION
+            info.append([us.contrasenia,us.tipo])//AÑADIMOS EL ESTRING "URL" A LA NUEVA COLECCION
+        }
     }
     //---------------------------------------------------------------------------------------------------------------
     //VISUALIZAR HISTORIAL EN TABLEVIEW
     //---------------------------------------------------------------------------------------------------------------
     //INDICAMOS EL NUMERO DE FILAS QUE TENDRA NUESTRA SECCIÓN A PARTIR DEL TOTAL DE OBJETOS QUE SE HABRAN CREADO GRACIAS A NUESTRA BASE DE DATOS
-    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        return usuarios.count
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //rellenarUsuInfo()
+        return info[section].count
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        //rellenarUsuInfo()
+        return info.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+       // rellenarUsuInfo()
+        return usu[section]
     }
     
     //IPOR CADA REGISTRO CREAMOS UNA LINEA Y LA RELLENAMOS CON LOS OBJETOS EXTRAIDOS DE LA BASE DE DATOS
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        //INDICAMOS EL ESTILO DE LA CELDA Y EL IDENTIFICADOR DE ESTA
-        //let celda = UITableViewCell(style: UITableViewCell.CellStyle.default,  reuseIdentifier: "celdilla")
-        let celda = tableView.dequeueReusableCell(withIdentifier: "celdilla", for: indexPath)
+        //rellenarUsuInfo()
         
-        //RECCOREMOS NUESTRA COLECCIÓN DE OBJETOS Y GUARDAMOS LA URL DE NUESTRO HISTORIAL EN UNA COLECCION DE STRINGS PARA PODER RELLENAR LAS CELDAS A CONTINUACION
-        for us in usuarios.reversed()
-        {
-            usu.append(us.usuario)//AÑADIMOS EL ESTRING "URL" A LA NUEVA COLECCION
-        }
-        //RELLENAMOS LAS CELDAS CON NUESTRA NUEVA COLECCION
-        celda.textLabel?.text = usu[indexPath.row]//LE INDICAMOS QUE LOS INSERTE SEGUN EL INDICE DE FILAS QUE CREAMOS EN LA FUNCION ANTERIOR CON "historial.count"
-        //CARGAMOS LAS CELDAS
+        let celda=tableView.dequeueReusableCell(withIdentifier: "celdilla", for: indexPath)
+        celda.detailTextLabel?.text=info[indexPath.section][indexPath.row]
+        celda.textLabel?.text=dataSub[indexPath.section][indexPath.row]
         return celda
+        
     }
-    
-    
-    
     
     //---------------------------------------------------------------------------------------------------------------
     func conectarDB()
     {
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            .appendingPathComponent("Usuarios.sqlite")
+            .appendingPathComponent("Datos.sqlite")
         
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
             print("error opening database")

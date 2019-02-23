@@ -22,8 +22,7 @@ class EliminarUsuarioViewController: UIViewController,UITableViewDelegate,UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         conectarDB()
-        tabla.reloadData()
-        
+        leerValores()
         
         // Do any additional setup after loading the view.
     }
@@ -63,7 +62,7 @@ class EliminarUsuarioViewController: UIViewController,UITableViewDelegate,UITabl
         let celda = tableView.dequeueReusableCell(withIdentifier: "celdilla", for: indexPath)
         
         //RECCOREMOS NUESTRA COLECCIÓN DE OBJETOS Y GUARDAMOS LA URL DE NUESTRO HISTORIAL EN UNA COLECCION DE STRINGS PARA PODER RELLENAR LAS CELDAS A CONTINUACION
-        for us in usuarios.reversed()
+        for us in usuarios
         {
             usu.append(us.usuario)//AÑADIMOS EL ESTRING "URL" A LA NUEVA COLECCION
         }
@@ -71,6 +70,7 @@ class EliminarUsuarioViewController: UIViewController,UITableViewDelegate,UITabl
         celda.textLabel?.text = usu[indexPath.row]//LE INDICAMOS QUE LOS INSERTE SEGUN EL INDICE DE FILAS QUE CREAMOS EN LA FUNCION ANTERIOR CON "historial.count"
         //CARGAMOS LAS CELDAS
         return celda
+        
     }
     
     
@@ -80,7 +80,7 @@ class EliminarUsuarioViewController: UIViewController,UITableViewDelegate,UITabl
     func conectarDB()
     {
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            .appendingPathComponent("Usuarios.sqlite")
+            .appendingPathComponent("Datos.sqlite")
         
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
             print("error opening database")
@@ -97,10 +97,9 @@ class EliminarUsuarioViewController: UIViewController,UITableViewDelegate,UITabl
     
     
     func leerValores(){
-        
         //PRIMERO LIMPIAMOS LA LISTA "HISTORIAL"
         usuarios.removeAll()
-        
+        usu.removeAll()
         //GUARDAMOS NUESTRA CONSULTA
         let queryString = "SELECT * FROM Usuarios"
         
@@ -153,7 +152,7 @@ class EliminarUsuarioViewController: UIViewController,UITableViewDelegate,UITabl
         
         //FINALIZAMOS LA SENTENCIA
         sqlite3_finalize(deleteStatement)
-        
+        leerValores()
     }
     //LE INDICAMOS QUE CUANDO TOQUEMOS EN ALGUNA PARTE DE LA VISTA CIERRE EL TECLADO
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
