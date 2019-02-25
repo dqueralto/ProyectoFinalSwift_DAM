@@ -12,47 +12,70 @@ import SQLite3
 class ContenidoTableViewController: UITableViewController {
     var db: OpaquePointer?
     var contenido = [Contenido]()
+    var con: [String] = []
+    var info: [[String]] = [[]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        crearBDContenido()
     }
 
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
+    //---------------------------------------------------------------------------------------------------------------
+    //VISUALIZAR HISTORIAL EN TABLEVIEW
+    //---------------------------------------------------------------------------------------------------------------
+    //INDICAMOS EL NUMERO DE FILAS QUE TENDRA NUESTRA SECCIÓN A PARTIR DEL TOTAL DE OBJETOS QUE SE HABRAN CREADO GRACIAS A NUESTRA BASE DE DATOS
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        //rellenarUsuInfo()
+        return info[section].count
     }
-
-    func conectarDB()
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        //rellenarUsuInfo()
+        return info.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // rellenarUsuInfo()
+        return con[section]
+    }
+    
+    //IPOR CADA REGISTRO CREAMOS UNA LINEA Y LA RELLENAMOS CON LOS OBJETOS EXTRAIDOS DE LA BASE DE DATOS
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+        //rellenarUsuInfo()
+        
+        let celda=tableView.dequeueReusableCell(withIdentifier: "celdilla", for: indexPath)
+        celda.detailTextLabel?.text=info[indexPath.section][indexPath.row]
+        return celda
+        
+    }
+    
+    //---------------------------------------------------------------------------------------------------------------
+
+
+    
+    func crearBDContenido()
+    {
+        //INDICAMOS DONDE SE GUARDARA LA BASE DE DATOS Y EL NOMBRE DE ESTAS
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("Datos.sqlite")
-        
+        //INDICAMOS SI DIERA ALGUN FALLO AL CONECTARSE
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
-            print("error opening database")
+            print("error al abrir la base de datos")
         }
-        else {
+        else {//SI PODEMOS CONECTARNOS A LA BASE DE DATOS CREAREMOS LA ESTRUCTURA DE ESTA, SI NO EXISTIERA NO SE HARIA NADA
             print("base abierta")
-            if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Usuarios (usuario TEXT PRIMARY KEY, contrasenia TEXT,tipo TEXT)", nil, nil, nil) != SQLITE_OK  {
+            if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Contenido (titulo TEXT PRIMARY KEY, descripcion TEXT,autor TEXT)", nil, nil, nil) != SQLITE_OK {
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
                 print("error creating table: \(errmsg)")
             }
         }
-        leerValores()
+        leerValoresContenido()
+        
+        
     }
     
-    
-    func leerValores(){
-        
-        //PRIMERO LIMPIAMOS LA LISTA "HISTORIAL"
-        contenido.removeAll()
+    func leerValoresContenido(){
         
         //GUARDAMOS NUESTRA CONSULTA
         let queryString = "SELECT * FROM Contenido"
@@ -73,11 +96,9 @@ class ContenidoTableViewController: UITableViewController {
             let descricion = String(cString: sqlite3_column_text(stmt, 1))
             let autor = String(cString: sqlite3_column_text(stmt, 2))
             
-            
             //AÑADIMOS LOS VALORES A LA LISTA
             contenido.append(Contenido(titulo: String(describing: titulo), descripcion: String(describing: descricion), autor: String(describing: autor)))
         }
-        
     }
 
 }

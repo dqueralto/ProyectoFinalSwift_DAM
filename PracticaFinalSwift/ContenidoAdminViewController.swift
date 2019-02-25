@@ -15,11 +15,15 @@ class ContenidoAdminViewController: UIViewController {
     var usuarios = [Usu]()
     
     @IBOutlet weak var usu: UILabel!
+    @IBOutlet weak var alertContenEli: UILabel!
+    @IBOutlet weak var alertUsuEli: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         conectarDBUsu()
         usu.text = self.usuario
+        alertUsuEli.isHidden = true
+        alertContenEli.isHidden = true
         // Do any additional setup after loading the view.
     }
     //---------------------------------------------------------------------------------------------------------
@@ -73,10 +77,46 @@ class ContenidoAdminViewController: UIViewController {
 
     @IBAction func borrarTodosUsuarios(_ sender: Any)
     {
+        alertContenEli.isHidden = true
         eliminarUsuarios()
-
+        leerValores()
         insertarAdmin()
-
+        alertUsuEli.isHidden = false
+    }
+    @IBAction func borrarTodosContenidos(_ sender: Any)
+    {
+        alertUsuEli.isHidden = true
+        eliminarContenidos()
+        alertContenEli.isHidden = false
+    }
+    func insertarAdmin()  {
+        //CREAMOS EL PUNTERO DE INSTRUCCIÓN
+        var stmt: OpaquePointer?
+        
+        //CREAMOS NUESTRA SENTENCIA
+        let queryString = "INSERT INTO Usuarios (usuario,contrasenia,tipo) VALUES ('admin','admin','A')"
+        //PREPARAMOS LA SENTENCIA
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print(queryString)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        
+        //EJECUTAMOS LA SENTENCIA PARA INSERTAR LOS VALORES
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("fallo al insertar en usuarios: \(errmsg)")
+            return
+        }
+        
+        //FINALIZAMOS LA SENTENCIA
+        sqlite3_finalize(stmt)
+        print("Insertado")
+        //displaying a success message
+        print("Histo saved successfully")
+        
     }
     
     func eliminarUsuarios()
@@ -108,34 +148,35 @@ class ContenidoAdminViewController: UIViewController {
         sqlite3_finalize(deleteStatement)
         //insertarAdmin()
     }
-    func insertarAdmin()  {
+    
+    func eliminarContenidos()
+    {
+        //GUARDAMOS NUESTRA CONSULTA
+        let queryString = "DELETE FROM Contenido"
         //CREAMOS EL PUNTERO DE INSTRUCCIÓN
-        var stmt: OpaquePointer?
+        var deleteStatement: OpaquePointer? = nil
         
-        //CREAMOS NUESTRA SENTENCIA
-        let queryString = "INSERT INTO Usuarios (usuario,contrasenia,tipo) VALUES ('admin','admin','A')"
-        //PREPARAMOS LA SENTENCIA
-        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+        //PREPARACIÓN DE LA CONSULTA
+        if sqlite3_prepare(db, queryString, -1, &deleteStatement, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print(queryString)
             print("error preparing insert: \(errmsg)")
             return
         }
-        
-        
-        //EJECUTAMOS LA SENTENCIA PARA INSERTAR LOS VALORES
-        if sqlite3_step(stmt) != SQLITE_DONE {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("fallo al insertar en usuarios: \(errmsg)")
-            return
+        //ELIMINAMOS LOS REGISTROS
+        if sqlite3_prepare_v2(db, queryString, -1, &deleteStatement, nil) == SQLITE_OK {
+            if sqlite3_step(deleteStatement) == SQLITE_DONE {
+                print("Successfully deleted row.")
+            } else {
+                print("Could not delete row.")
+            }
+        } else {
+            print("DELETE statement could not be prepared")
         }
         
         //FINALIZAMOS LA SENTENCIA
-        sqlite3_finalize(stmt)
-        print("Insertado")
-        //displaying a success message
-        print("Histo saved successfully")
-        
+        sqlite3_finalize(deleteStatement)
+        //insertarAdmin()
     }
     //---------------------------------------------------------------------------------------------------------
 

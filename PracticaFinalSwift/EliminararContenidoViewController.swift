@@ -1,5 +1,5 @@
 //
-//  EliminarUsuarioViewController.swift
+//  VisualizarContenidoViewController.swift
 //  PracticaFinalSwift
 //
 //  Created by Daniel Queraltó Parra on 23/02/2019.
@@ -9,38 +9,35 @@
 import UIKit
 import SQLite3
 
-class EliminarUsuarioViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class EliminararContenidoViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     var db: OpaquePointer?
-    var usuarios = [Usu]()
-    var usu: [String] = []
-    var usuSelect: String = ""
-
+    var contenido = [Contenido]()
+    var cont: [String] = []
+    var contSelect: String = ""
+    
     @IBOutlet weak var tabla: UITableView!
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        conectarDB()
-        leerValores()
-        
+
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func borrarContenido(_ sender: Any)
+    {
+        print(contSelect)
+        eliminarUsuario()
+        insertarAdmin()
+        leerValoresContenido()
+        tabla.reloadData()
     }
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
         let celda = self.tabla.cellForRow(at: indexPath)
         let texto = (celda?.textLabel?.text)!
-        usuSelect = texto
+        self.contSelect = texto
     }
     
-    @IBAction func borrarUsu(_ sender: Any)
-    {
-        print(usuSelect)
-        eliminarUsuario()
-        insertarAdmin()
-        leerValores()
-        tabla.reloadData()
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -52,7 +49,7 @@ class EliminarUsuarioViewController: UIViewController,UITableViewDelegate,UITabl
     //INDICAMOS EL NUMERO DE FILAS QUE TENDRA NUESTRA SECCIÓN A PARTIR DEL TOTAL DE OBJETOS QUE SE HABRAN CREADO GRACIAS A NUESTRA BASE DE DATOS
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return usuarios.count
+        return contenido.count
     }
     
     //IPOR CADA REGISTRO CREAMOS UNA LINEA Y LA RELLENAMOS CON LOS OBJETOS EXTRAIDOS DE LA BASE DE DATOS
@@ -63,12 +60,12 @@ class EliminarUsuarioViewController: UIViewController,UITableViewDelegate,UITabl
         let celda = tableView.dequeueReusableCell(withIdentifier: "celdilla", for: indexPath)
         
         //RECCOREMOS NUESTRA COLECCIÓN DE OBJETOS Y GUARDAMOS LA URL DE NUESTRO HISTORIAL EN UNA COLECCION DE STRINGS PARA PODER RELLENAR LAS CELDAS A CONTINUACION
-        for us in usuarios
+        for con in contenido
         {
-            usu.append(us.usuario)//AÑADIMOS EL ESTRING "URL" A LA NUEVA COLECCION
+            self.cont.append(con.titulo)//AÑADIMOS EL ESTRING "URL" A LA NUEVA COLECCION
         }
         //RELLENAMOS LAS CELDAS CON NUESTRA NUEVA COLECCION
-        celda.textLabel?.text = usu[indexPath.row]//LE INDICAMOS QUE LOS INSERTE SEGUN EL INDICE DE FILAS QUE CREAMOS EN LA FUNCION ANTERIOR CON "historial.count"
+        celda.textLabel?.text = self.cont[indexPath.row]//LE INDICAMOS QUE LOS INSERTE SEGUN EL INDICE DE FILAS QUE CREAMOS EN LA FUNCION ANTERIOR CON "historial.count"
         //CARGAMOS LAS CELDAS
         return celda
         
@@ -80,57 +77,56 @@ class EliminarUsuarioViewController: UIViewController,UITableViewDelegate,UITabl
     //---------------------------------------------------------------------------------------------------------------
     func conectarDB()
     {
+
+        //INDICAMOS DONDE SE GUARDARA LA BASE DE DATOS Y EL NOMBRE DE ESTAS
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("Datos.sqlite")
-        
+        //INDICAMOS SI DIERA ALGUN FALLO AL CONECTARSE
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
-            print("error opening database")
+            print("error al abrir la base de datos")
         }
-        else {
+        else {//SI PODEMOS CONECTARNOS A LA BASE DE DATOS CREAREMOS LA ESTRUCTURA DE ESTA, SI NO EXISTIERA NO SE HARIA NADA
             print("base abierta")
-            if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Usuarios (usuario TEXT PRIMARY KEY, contrasenia TEXT,tipo TEXT)", nil, nil, nil) != SQLITE_OK  {
+            if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Contenido (titulo TEXT PRIMARY KEY, descripcion TEXT,autor TEXT)", nil, nil, nil) != SQLITE_OK {
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
                 print("error creating table: \(errmsg)")
             }
         }
-        leerValores()
-    }
-    
-    
-    func leerValores(){
-        //PRIMERO LIMPIAMOS LA LISTA "HISTORIAL"
-        usuarios.removeAll()
-        usu.removeAll()
-        //GUARDAMOS NUESTRA CONSULTA
-        let queryString = "SELECT * FROM Usuarios"
-        
-        //PUNTERO DE INSTRUCCIÓN
-        var stmt:OpaquePointer?
-        
-        //PREPARACIÓN DE LA CONSULTA
-        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing insert: \(errmsg)")
-            return
-        }
-        
-        //RECORREMOS LOS REGISTROS
-        while(sqlite3_step(stmt) == SQLITE_ROW){
-            let usuario = String(cString: sqlite3_column_text(stmt, 0))
-            let contrasenia = String(cString: sqlite3_column_text(stmt, 1))
-            let tipo = String(cString: sqlite3_column_text(stmt, 2))
+        leerValoresContenido()
             
             
-            //AÑADIMOS LOS VALORES A LA LISTA
-            usuarios.append(Usu(usuario: String(describing: usuario), contrasenia: String(describing: contrasenia),tipo:String(describing: tipo)))
         }
         
-    }
+        func leerValoresContenido(){
+            
+            //GUARDAMOS NUESTRA CONSULTA
+            let queryString = "SELECT * FROM Contenido"
+            
+            //PUNTERO DE INSTRUCCIÓN
+            var stmt:OpaquePointer?
+            
+            //PREPARACIÓN DE LA CONSULTA
+            if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+                let errmsg = String(cString: sqlite3_errmsg(db)!)
+                print("error preparing insert: \(errmsg)")
+                return
+            }
+            
+            //RECORREMOS LOS REGISTROS
+            while(sqlite3_step(stmt) == SQLITE_ROW){
+                let titulo = String(cString: sqlite3_column_text(stmt, 0))
+                let descricion = String(cString: sqlite3_column_text(stmt, 1))
+                let autor = String(cString: sqlite3_column_text(stmt, 2))
+                
+                //AÑADIMOS LOS VALORES A LA LISTA
+                self.contenido.append(Contenido(titulo: String(describing: titulo), descripcion: String(describing: descricion), autor: String(describing: autor)))
+            }
+        }
     
     func eliminarUsuario()
     {
         //GUARDAMOS NUESTRA CONSULTA
-        let queryString = "DELETE FROM Usuarios WHERE usuario = '"+usuSelect+"' "
+        let queryString = "DELETE FROM Contenido WHERE titulo = '"+self.contSelect+"' "
         //CREAMOS EL PUNTERO DE INSTRUCCIÓN
         var deleteStatement: OpaquePointer? = nil
         
@@ -154,7 +150,7 @@ class EliminarUsuarioViewController: UIViewController,UITableViewDelegate,UITabl
         
         //FINALIZAMOS LA SENTENCIA
         sqlite3_finalize(deleteStatement)
-        leerValores()
+        leerValoresContenido()
     }
     func insertarAdmin()  {
         //CREAMOS EL PUNTERO DE INSTRUCCIÓN

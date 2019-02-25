@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         crearBD()
-        crearBDContenido()
+        //crearBDContenido()
         //insertarAdmin()
 
         for usu in usuarios.reversed()
@@ -52,10 +52,42 @@ class ViewController: UIViewController {
                 let errmsg = String(cString: sqlite3_errmsg(db)!)
                 print("error creating table: \(errmsg)")
             }
+            if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Contenido (titulo TEXT PRIMARY KEY, descripcion TEXT,autor TEXT)", nil, nil, nil) != SQLITE_OK {
+                let errmsg = String(cString: sqlite3_errmsg(db)!)
+                print("error creating table: \(errmsg)")
+            }
         }
         leerValores()
+        leerValoresContenido()
+        
+    }
+    
+    func leerValores(){
         
         
+        //GUARDAMOS NUESTRA CONSULTA
+        let queryString = "SELECT * FROM Usuarios"
+        
+        //PUNTERO DE INSTRUCCIÓN
+        var stmt:OpaquePointer?
+        
+        //PREPARACIÓN DE LA CONSULTA
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        //RECORREMOS LOS REGISTROS
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            let usuario = String(cString: sqlite3_column_text(stmt, 0))
+            let contrasenia = String(cString: sqlite3_column_text(stmt, 1))
+            let tipo = String(cString: sqlite3_column_text(stmt, 2))
+            
+            
+            //AÑADIMOS LOS VALORES A LA LISTA
+            usuarios.append(Usu(usuario: String(describing: usuario), contrasenia: String(describing: contrasenia),tipo:String(describing: tipo)))
+        }
     }
     
     func crearBDContenido()
@@ -79,34 +111,6 @@ class ViewController: UIViewController {
         
     }
 
-    func leerValores(){
-        
-        
-        //GUARDAMOS NUESTRA CONSULTA
-        let queryString = "SELECT * FROM Usuarios"
-        
-        //PUNTERO DE INSTRUCCIÓN
-        var stmt:OpaquePointer?
-        
-        //PREPARACIÓN DE LA CONSULTA
-        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("error preparing insert: \(errmsg)")
-            return
-        }
-        
-        //RECORREMOS LOS REGISTROS
-        while(sqlite3_step(stmt) == SQLITE_ROW){
-            let usuario = String(cString: sqlite3_column_text(stmt, 0))
-            let contrasenia = String(cString: sqlite3_column_text(stmt, 1))
-            let tipo = String(cString: sqlite3_column_text(stmt, 2))
-
-            
-            //AÑADIMOS LOS VALORES A LA LISTA
-            usuarios.append(Usu(usuario: String(describing: usuario), contrasenia: String(describing: contrasenia),tipo:String(describing: tipo)))
-        }
-    }
-    
     func leerValoresContenido(){
         
         

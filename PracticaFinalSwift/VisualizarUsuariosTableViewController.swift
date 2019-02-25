@@ -13,14 +13,23 @@ class VisualizarUsuariosTableViewController: UITableViewController {
     var db: OpaquePointer?
     var usuarios = [Usu]()
     var usu: [String] = []
-    var info: [[String]] = [[]]
-    let dataSub:[[String]]=[["Contraseña: ","Tipo: "]]
+    var dataSub: [[String]] = [[]]
+    let info:[[String]]=[["Contraseña: ","Tipo: "]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         conectarDB()
-        
+        genUsu()
+
         // Do any additional setup after loading the view.
+    }
+    func genUsu()
+    {
+        for us in usuarios
+        {
+            usu.append(us.usuario)
+            dataSub.append([us.contrasenia,us.tipo])
+        }
     }
     
     override func didReceiveMemoryWarning()
@@ -29,14 +38,7 @@ class VisualizarUsuariosTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func rellenarUsuInfo()
-    {
-        for us in usuarios
-        {
-            usu.append(us.usuario)//AÑADIMOS EL ESTRING "URL" A LA NUEVA COLECCION
-            info.append([us.contrasenia,us.tipo])//AÑADIMOS EL ESTRING "URL" A LA NUEVA COLECCION
-        }
-    }
+
     //---------------------------------------------------------------------------------------------------------------
     //VISUALIZAR HISTORIAL EN TABLEVIEW
     //---------------------------------------------------------------------------------------------------------------
@@ -52,20 +54,16 @@ class VisualizarUsuariosTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-       // rellenarUsuInfo()
         return usu[section]
     }
     
     //IPOR CADA REGISTRO CREAMOS UNA LINEA Y LA RELLENAMOS CON LOS OBJETOS EXTRAIDOS DE LA BASE DE DATOS
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        //rellenarUsuInfo()
-        
         let celda=tableView.dequeueReusableCell(withIdentifier: "celdilla", for: indexPath)
         celda.detailTextLabel?.text=info[indexPath.section][indexPath.row]
-        celda.textLabel?.text=dataSub[indexPath.section][indexPath.row]
+        //celda.textLabel?.text=dataSub[indexPath.section][indexPath.row]
         return celda
-        
     }
     
     //---------------------------------------------------------------------------------------------------------------
