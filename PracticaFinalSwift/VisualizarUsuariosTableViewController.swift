@@ -9,17 +9,20 @@
 import UIKit
 import SQLite3
 
-class VisualizarUsuariosTableViewController: UITableViewController {
+class VisualizarUsuariosTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var db: OpaquePointer?
     var usuarios = [Usu]()
     var usu: [String] = []
-    var dataSub: [[String]] = [[]]
-    let info:[[String]]=[["Contraseña: ","Tipo: "]]
+
     
+    var cabeceras: [[String]] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("0")
         conectarDB()
         genUsu()
+        print("0.0")
 
         // Do any additional setup after loading the view.
     }
@@ -27,8 +30,15 @@ class VisualizarUsuariosTableViewController: UITableViewController {
     {
         for us in usuarios
         {
-            usu.append(us.usuario)
-            dataSub.append([us.contrasenia,us.tipo])
+            
+            usu.append("Usuario: "+us.usuario)
+            cabeceras.append(["Pasword: "+us.contrasenia,"Tipo: "+us.tipo])
+            print("-----------")
+            print(us.usuario)
+            print(us.contrasenia)
+            print(us.tipo)
+            print("-----------")
+
         }
     }
     
@@ -43,29 +53,29 @@ class VisualizarUsuariosTableViewController: UITableViewController {
     //VISUALIZAR HISTORIAL EN TABLEVIEW
     //---------------------------------------------------------------------------------------------------------------
     //INDICAMOS EL NUMERO DE FILAS QUE TENDRA NUESTRA SECCIÓN A PARTIR DEL TOTAL DE OBJETOS QUE SE HABRAN CREADO GRACIAS A NUESTRA BASE DE DATOS
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //rellenarUsuInfo()
-        return info[section].count
+        return cabeceras[section].count
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         //rellenarUsuInfo()
-        return info.count
+        return cabeceras.count
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return usu[section]
     }
     
     //IPOR CADA REGISTRO CREAMOS UNA LINEA Y LA RELLENAMOS CON LOS OBJETOS EXTRAIDOS DE LA BASE DE DATOS
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    public  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let celda=tableView.dequeueReusableCell(withIdentifier: "celdilla", for: indexPath)
-        celda.detailTextLabel?.text=info[indexPath.section][indexPath.row]
-        //celda.textLabel?.text=dataSub[indexPath.section][indexPath.row]
+        celda.textLabel?.text=cabeceras[indexPath.section][indexPath.row]
         return celda
     }
-    
+    //---------------------------------------------------------------------------------------------------------------
+    //Base de Datos
     //---------------------------------------------------------------------------------------------------------------
     func conectarDB()
     {
@@ -116,6 +126,8 @@ class VisualizarUsuariosTableViewController: UITableViewController {
         }
         
     }
+    //---------------------------------------------------------------------------------------------------------------
+
     
     //LE INDICAMOS QUE CUANDO TOQUEMOS EN ALGUNA PARTE DE LA VISTA CIERRE EL TECLADO
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
