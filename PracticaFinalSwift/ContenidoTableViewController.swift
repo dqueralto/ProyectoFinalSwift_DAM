@@ -12,14 +12,26 @@ import SQLite3
 class ContenidoTableViewController: UITableViewController {
     var db: OpaquePointer?
     var contenido = [Contenido]()
-    var con: [String] = []
+    var titulo: [String] = []
     var info: [[String]] = [[]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         crearBDContenido()
+        genCont()
     }
 
+    
+    func genCont()
+    {
+        for co in contenido
+        {
+            
+            titulo.append("Titulo: "+co.titulo)
+            info.append(["Autor: "+co.autor,"Descripcion: "+co.descripcion])
+            
+        }
+    }
     //---------------------------------------------------------------------------------------------------------------
     //VISUALIZAR HISTORIAL EN TABLEVIEW
     //---------------------------------------------------------------------------------------------------------------
@@ -36,17 +48,16 @@ class ContenidoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         // rellenarUsuInfo()
-        return con[section]
+        return titulo[section]
     }
     
     //IPOR CADA REGISTRO CREAMOS UNA LINEA Y LA RELLENAMOS CON LOS OBJETOS EXTRAIDOS DE LA BASE DE DATOS
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        //rellenarUsuInfo()
-        
         let celda=tableView.dequeueReusableCell(withIdentifier: "celdilla", for: indexPath)
-        celda.detailTextLabel?.text=info[indexPath.section][indexPath.row]
+        celda.textLabel?.text=info[indexPath.section][indexPath.row]
         return celda
+
         
     }
     

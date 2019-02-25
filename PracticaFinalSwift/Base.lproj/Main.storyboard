@@ -213,7 +213,7 @@
                                 </constraints>
                                 <state key="normal" title="Visualizar Usuario"/>
                                 <connections>
-                                    <segue destination="4d6-3F-mpE" kind="show" id="Lb1-yF-MJb"/>
+                                    <segue destination="PV5-Xg-iS7" kind="show" id="MgI-6p-aTn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YmS-XX-alK">
@@ -305,7 +305,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VnV-xE-Tji">
-                                <rect key="frame" x="0.0" y="291" width="414" height="271"/>
+                                <rect key="frame" x="20" y="291" width="374" height="271"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -367,7 +367,7 @@
                             <constraint firstItem="nJZ-rD-lfW" firstAttribute="leading" secondItem="cSm-Yw-qpZ" secondAttribute="leading" constant="20" id="8XN-Xz-Phy"/>
                             <constraint firstItem="Khy-Dm-fXT" firstAttribute="leading" secondItem="cSm-Yw-qpZ" secondAttribute="leading" constant="32" id="Ap4-G8-POS"/>
                             <constraint firstItem="kxV-pY-eb5" firstAttribute="top" secondItem="3H4-ed-Yor" secondAttribute="bottom" constant="5" id="BiM-Wy-pQc"/>
-                            <constraint firstItem="VnV-xE-Tji" firstAttribute="trailing" secondItem="cSm-Yw-qpZ" secondAttribute="trailing" id="Bxk-b9-dbE"/>
+                            <constraint firstItem="VnV-xE-Tji" firstAttribute="trailing" secondItem="cSm-Yw-qpZ" secondAttribute="trailing" constant="-20" id="Bxk-b9-dbE"/>
                             <constraint firstItem="lKq-sr-cIl" firstAttribute="leading" secondItem="cSm-Yw-qpZ" secondAttribute="leading" constant="20" id="Egv-Kc-W98"/>
                             <constraint firstItem="cSm-Yw-qpZ" firstAttribute="trailing" secondItem="3H4-ed-Yor" secondAttribute="trailing" constant="324" id="Fmh-zE-o2m"/>
                             <constraint firstItem="nJZ-rD-lfW" firstAttribute="top" secondItem="gub-cw-RWC" secondAttribute="bottom" constant="69" id="Hjz-aJ-yKa"/>
@@ -386,7 +386,7 @@
                             <constraint firstItem="gub-cw-RWC" firstAttribute="leading" secondItem="cSm-Yw-qpZ" secondAttribute="leading" constant="171" id="jZe-Jt-9bc"/>
                             <constraint firstItem="Khy-Dm-fXT" firstAttribute="top" secondItem="kxV-pY-eb5" secondAttribute="bottom" constant="27" id="kBa-By-P1J"/>
                             <constraint firstItem="3H4-ed-Yor" firstAttribute="leading" secondItem="cSm-Yw-qpZ" secondAttribute="leading" constant="32" id="lPB-Bc-5aX"/>
-                            <constraint firstItem="VnV-xE-Tji" firstAttribute="leading" secondItem="cSm-Yw-qpZ" secondAttribute="leading" id="mfd-wy-ili"/>
+                            <constraint firstItem="VnV-xE-Tji" firstAttribute="leading" secondItem="cSm-Yw-qpZ" secondAttribute="leading" constant="20" id="mfd-wy-ili"/>
                             <constraint firstItem="cSm-Yw-qpZ" firstAttribute="bottom" secondItem="gub-cw-RWC" secondAttribute="bottom" constant="251" id="noO-4J-wfe"/>
                             <constraint firstItem="aii-vz-g2t" firstAttribute="leading" secondItem="cSm-Yw-qpZ" secondAttribute="leading" constant="20" id="rms-yx-7HG"/>
                             <constraint firstItem="cSm-Yw-qpZ" firstAttribute="trailing" secondItem="nJZ-rD-lfW" secondAttribute="trailing" constant="20" id="ues-hh-Eaa"/>
@@ -856,45 +856,32 @@
             <point key="canvasLocation" x="2520" y="-2404"/>
         </scene>
         <!--Visualizar Usuarios Table View Controller-->
-        <scene sceneID="LxR-L9-q8P">
+        <scene sceneID="Dtb-Co-jF9">
             <objects>
-                <viewController id="4d6-3F-mpE" customClass="VisualizarUsuariosTableViewController" customModule="PracticaFinalSwift" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="e7D-Qr-8Yv">
+                <tableViewController id="PV5-Xg-iS7" customClass="VisualizarUsuariosTableViewController" customModule="PracticaFinalSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="K8k-jr-FPO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6yd-q6-pJk">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celdilla" id="nqb-YI-jJb">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nqb-YI-jJb" id="rhh-uZ-zg2">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="4d6-3F-mpE" id="LPk-Ri-TFq"/>
-                                    <outlet property="delegate" destination="4d6-3F-mpE" id="REC-Ds-Qm1"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="6yd-q6-pJk" firstAttribute="leading" secondItem="94i-vz-5UP" secondAttribute="leading" id="3jn-jv-BMh"/>
-                            <constraint firstItem="94i-vz-5UP" firstAttribute="trailing" secondItem="6yd-q6-pJk" secondAttribute="trailing" id="jjV-al-zeZ"/>
-                            <constraint firstItem="94i-vz-5UP" firstAttribute="bottom" secondItem="6yd-q6-pJk" secondAttribute="bottom" id="np9-1n-2ht"/>
-                            <constraint firstItem="6yd-q6-pJk" firstAttribute="top" secondItem="94i-vz-5UP" secondAttribute="top" id="tNo-dk-GRr"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="94i-vz-5UP"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OZh-kN-ryz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celdilla" id="Wpb-OU-XDP">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wpb-OU-XDP" id="qX9-Ba-f62">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PV5-Xg-iS7" id="lQw-CD-yhu"/>
+                            <outlet property="delegate" destination="PV5-Xg-iS7" id="cac-a1-pRe"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n07-Wv-bSM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3152" y="-2079"/>
+            <point key="canvasLocation" x="3154" y="-2078"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="HBA-WP-HvK">
