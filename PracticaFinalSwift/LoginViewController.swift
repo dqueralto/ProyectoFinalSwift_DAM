@@ -91,18 +91,28 @@ class LoginViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
+        print("--------------------------------------------------------")
+        print("1")
         if segue.identifier == "contenido"
         {
+            print("2")
+
             if let vistaContenido = segue.destination as? ContenidoViewController
             {
+                print("3")
+
                 vistaContenido.usuario =  usuario.text!
             }
         }
         
         if segue.identifier == "contenidoAdmin"
         {
+            print("4")
+
             if let vistaContenido = segue.destination as? ContenidoAdminViewController
             {
+                print("3")
+                
                 vistaContenido.usuario =  usuario.text!
             }
         }

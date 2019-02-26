@@ -43,13 +43,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="admin" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dcn-hC-Yd0">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dcn-hC-Yd0">
                                 <rect key="frame" x="50" y="292" width="314" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="admin" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VN1-s4-eHL">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VN1-s4-eHL">
                                 <rect key="frame" x="50" y="359" width="314" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -289,7 +289,7 @@
                     <connections>
                         <outlet property="alertContenEli" destination="a6J-W8-5ma" id="jU7-hj-sno"/>
                         <outlet property="alertUsuEli" destination="HOX-ef-SWe" id="dIr-6g-vyw"/>
-                        <outlet property="usu" destination="a6J-W8-5ma" id="eUM-Cf-5Ll"/>
+                        <outlet property="usu" destination="B0y-XD-pPD" id="4xf-kX-Jc0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skx-z1-8Qi" userLabel="First Responder" sceneMemberID="firstResponder"/>
