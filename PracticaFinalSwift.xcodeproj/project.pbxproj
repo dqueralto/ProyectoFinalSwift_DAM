@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F0248062225B7FA00232B33 /* TiPadProApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0248012225B7FA00232B33 /* TiPadProApp.png */; };
+		7F0248072225B7FA00232B33 /* TiPadApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0248022225B7FA00232B33 /* TiPadApp.png */; };
+		7F0248082225B7FA00232B33 /* TiPadApp2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0248032225B7FA00232B33 /* TiPadApp2.png */; };
+		7F0248092225B7FA00232B33 /* TAppStore.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0248042225B7FA00232B33 /* TAppStore.png */; };
+		7F02480A2225B7FA00232B33 /* TiPineApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0248052225B7FA00232B33 /* TiPineApp.png */; };
+		7F02480C2225B81200232B33 /* TiPineApp2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F02480B2225B81200232B33 /* TiPineApp2.png */; };
+		7F0248102225B85300232B33 /* Protecor.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F02480F2225B85300232B33 /* Protecor.png */; };
 		7F664882221C834F00D0938E /* ContenidoAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F664881221C834F00D0938E /* ContenidoAdminViewController.swift */; };
 		7F99A9A722258F59007419ED /* NavegadorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F99A9A622258F59007419ED /* NavegadorViewController.swift */; };
 		7F99A9A922258F61007419ED /* HistorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F99A9A822258F61007419ED /* HistorialViewController.swift */; };
@@ -45,6 +52,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F0248012225B7FA00232B33 /* TiPadProApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TiPadProApp.png; sourceTree = "<group>"; };
+		7F0248022225B7FA00232B33 /* TiPadApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TiPadApp.png; sourceTree = "<group>"; };
+		7F0248032225B7FA00232B33 /* TiPadApp2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TiPadApp2.png; sourceTree = "<group>"; };
+		7F0248042225B7FA00232B33 /* TAppStore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TAppStore.png; sourceTree = "<group>"; };
+		7F0248052225B7FA00232B33 /* TiPineApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TiPineApp.png; sourceTree = "<group>"; };
+		7F02480B2225B81200232B33 /* TiPineApp2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TiPineApp2.png; sourceTree = "<group>"; };
+		7F02480F2225B85300232B33 /* Protecor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Protecor.png; sourceTree = "<group>"; };
 		7F664881221C834F00D0938E /* ContenidoAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContenidoAdminViewController.swift; sourceTree = "<group>"; };
 		7F99A9A622258F59007419ED /* NavegadorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavegadorViewController.swift; sourceTree = "<group>"; };
 		7F99A9A822258F61007419ED /* HistorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorialViewController.swift; sourceTree = "<group>"; };
@@ -96,9 +110,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F0247FE2225B75700232B33 /* Imagenes */ = {
+			isa = PBXGroup;
+			children = (
+				7F0248002225B77400232B33 /* Fondos */,
+				7F0247FF2225B76600232B33 /* Iconos */,
+			);
+			path = Imagenes;
+			sourceTree = "<group>";
+		};
+		7F0247FF2225B76600232B33 /* Iconos */ = {
+			isa = PBXGroup;
+			children = (
+				7F0248042225B7FA00232B33 /* TAppStore.png */,
+				7F0248022225B7FA00232B33 /* TiPadApp.png */,
+				7F0248032225B7FA00232B33 /* TiPadApp2.png */,
+				7F0248012225B7FA00232B33 /* TiPadProApp.png */,
+				7F0248052225B7FA00232B33 /* TiPineApp.png */,
+				7F02480B2225B81200232B33 /* TiPineApp2.png */,
+			);
+			path = Iconos;
+			sourceTree = "<group>";
+		};
+		7F0248002225B77400232B33 /* Fondos */ = {
+			isa = PBXGroup;
+			children = (
+				7F02480F2225B85300232B33 /* Protecor.png */,
+			);
+			path = Fondos;
+			sourceTree = "<group>";
+		};
 		7FA2E7832204C1F90056CF60 = {
 			isa = PBXGroup;
 			children = (
+				7F0247FE2225B75700232B33 /* Imagenes */,
 				7FA2E78E2204C1F90056CF60 /* PracticaFinalSwift */,
 				7FA2E7A32204C1FD0056CF60 /* PracticaFinalSwiftTests */,
 				7FA2E7AE2204C1FD0056CF60 /* PracticaFinalSwiftUITests */,
@@ -276,7 +321,14 @@
 			files = (
 				7FA2E79A2204C1FD0056CF60 /* LaunchScreen.storyboard in Resources */,
 				7FA2E7972204C1FD0056CF60 /* Assets.xcassets in Resources */,
+				7F02480A2225B7FA00232B33 /* TiPineApp.png in Resources */,
+				7F0248062225B7FA00232B33 /* TiPadProApp.png in Resources */,
+				7F02480C2225B81200232B33 /* TiPineApp2.png in Resources */,
+				7F0248082225B7FA00232B33 /* TiPadApp2.png in Resources */,
+				7F0248072225B7FA00232B33 /* TiPadApp.png in Resources */,
 				7FA2E7952204C1F90056CF60 /* Main.storyboard in Resources */,
+				7F0248092225B7FA00232B33 /* TAppStore.png in Resources */,
+				7F0248102225B85300232B33 /* Protecor.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
